@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+
+    ticket = window.location.search
+
+    osuhtrl = 'https://login.oregonstate.edu/idp/profile/cas/serviceValidate'
+    infoHtrl = osuhtrl.concat(ticket, '&service=http://web.engr.oregonstate.edu/~hezhi/profile.html')
+
+
+    window.location.href = infoHtrl;
+</script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>profile</title>
+</head>
+<body>
+
+</body>
+</html>
