@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>OSU Share Ride System</title>
+</head>
+
+<h1 style="background-color:orangered">
+    <img src=" https://main.oregonstate.edu/sites/all/themes/doug_fir/logo.svg" width="300" height="90">
+    <b style="font-family:arial;color:black;font-size:50px;">Oregon State University Share Ride System</b>
+    <hr />
+</h1>
+<br />
+<br />
+
+<body>
+
+    <p>Welcome to Oregon State University Share Ride System</p>
+    <br />
+    <p>This system is ...</p>
+    <br />
+    <br />
+    <br />
+    <label>I agree with user terms<input type="checkbox" name="check"></label>
+    <br />
+    <br />
+    <button id="login" onclick="login()" type="button" width="100" height="50">Log in</button>
+    <script>
+    function login() {
+        window.location.href = "https://login.oregonstate.edu/idp/profile/cas/login?service=http://web.engr.oregonstate.edu/~hezhi/profile.html";
+    }
+    </script>
+</body>
+</html>
