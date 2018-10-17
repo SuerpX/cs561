@@ -1,0 +1,52 @@
+.container {
+  max-width: 960px;
+}
+
+/*
+ * Custom translucent site header
+ */
+
+.site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header a {
+  color: #999;
+  transition: ease-in-out color .15s;
+}
+.site-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+/*background-image: url('./osu.jpg'); width: 50px; height: 50px;*/
+ /* background: url(osu.jpg) no-repeat center center;*/
+
+.first-introduce {
+	position: relative;
+	background: url(./osu.jpg) no-repeat center center;
+	background-size: cover；
+}
+
+/*Extra*/
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+	color: #fff;
+    background-color: #FF7517;
+    border-color: #FF7517;
+}
+
+.flex-equal > * {
+  -ms-flex: 1;
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+.overflow-hidden { overflow: hidden; }
