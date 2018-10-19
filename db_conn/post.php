@@ -6,7 +6,6 @@ class Post
 {
     //DB stuff
     private $conn;
-    private $table = "userInfo";
 
     // Post Properties
     public $userId;
@@ -36,6 +35,19 @@ class Post
             echo 'error'.$e;
         }
 
+    }
+
+    public function updateUser($info){
+
+        try {
+            //$update = "UPDATE userInfo SET phoneNumber=? address=? finishRegister=? WHERE userId=?";
+            //$stmt = $this->conn->prepare($update);
+           // $stmt->execute([$info['phoneNumber'], $info['address'], $info['finishRegister'], $info['userId']]);
+
+        }catch (PDOException $e){
+        //    return "error".$e;
+        }
+      //  return "success";
     }
 }
 /*

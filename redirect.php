@@ -82,7 +82,7 @@ function queryAndInsert($onid, $firstname, $lastname, $email){
             for(i = 0; i < userInfo.length; i++){
                 if (userInfo[i]['tag'] == "CAS:USER") {
                  //   alert(userInfo[i]['value']);
-                    sessionStorage.setItem("logged_in_id", userInfo[i]['value']);
+                    localStorage.setItem("currentUserInfo", userInfo[i]['value']);
                     window.location.replace("http://web.engr.oregonstate.edu/~hezhi/profile.html");
                     break;
                 }

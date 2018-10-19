@@ -8,24 +8,29 @@
     <button type="button" onclick="loadXMLDoc()">Change Content</button>
 </div>
 
-<script>
-    function loadXMLDoc() {
-        var xhr = new XMLHttpRequest();
-        var url = 'http://web.engr.oregonstate.edu/~hezhi/xian_test/api/users/linzhe';
-        xhr.open('GET', url, true);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                if (xhr.responseURL === url) {
-                    console.log('got what we wanted, hooray!');
-                }
-                else {
-                    alert(xhr.responseText);
-                    console.log('boo, we were redirected from', url, 'to', xhr.responseURL);
-                }
-            }
-        };
-        xhr.send();
+<script type="text/javascript">
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if( xhr.readyState==4 && xhr.status==200 )
+        {
+            console.log(xhr.responseText);
+        }
     }
+    var json = {
+        "userId":"linzhe",
+        "firstname":"Zhengxian",
+        "lastname":"Lin",
+        "phoneNumber":"123456",
+        "email":"linzhe@oregonstate.edu",
+        "address":"fjdhsklfjklasd",
+        "orderId":null,
+        "finishRegister":"1"
+    };
+    xhr.open("POST","http://web.engr.oregonstate.edu/~hezhi/api/read.php?view=update");
+    xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
+    xhr.send(JSON.stringify(json));
+
 </script>
 
 </body>

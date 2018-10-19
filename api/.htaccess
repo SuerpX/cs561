@@ -5,5 +5,6 @@ Header set Access-Control-Allow-Origin: "*"
 Header set Access-Control-Allow-Methods: "*"
 Header set Access-Control-Allow-Headers: "Origin, X-Requested-With, Content-Type, Accept, Authorization"
 
-RewriteRule ^users/([0-9a-zA-Z]+)$   http://web.engr.oregonstate.edu/~hezhi/xian_test/api/read.php?view=userInfo&onid=$1 [L,R=302]
+RewriteRule ^users/([0-9a-zA-Z]+)$   http://web.engr.oregonstate.edu/~hezhi/api/read.php?view=userInfo&onid=$1 [L,R=302]
+RewriteRule ^users/update/   http://web.engr.oregonstate.edu/~hezhi/api/read.php?view=update [L,R=302]
 
