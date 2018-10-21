@@ -1,0 +1,42 @@
+﻿
+<h1>Home Page</h1>
+<p>You're logged in with beaver rider</p>
+
+<p *ngIf="currentUser">{{currentUser.userId}}  {{currentUser.email}}  {{currentUser.firstname}}  {{currentUser.lastname}}</p>
+<a (click)="userLogout()" class="text-primary">logout</a>
+
+
+<!--
+<h3>All registered users:</h3>
+
+
+<ul>
+    <li *ngFor="let user of users">
+        {{user.username}} ({{user.firstName}} {{user.lastName}})
+        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+    </li>
+</ul>
+
+<p><a [routerLink]="['/login']">Logout</a></p>
+
+-->
+
+
+<!--
+<a [routerLink]="['/osulogin']">
+    <button type="button" class="btn btn-primary btn-lg">OSU Login</button>
+</a>
+
+<br><br>
+
+<a [routerLink]="['/register']">
+    <button type="button" class="btn btn-primary btn-lg">Register</button>
+</a>
+-->
+
+
+<br><br>
+
+<a [routerLink]="['/profile']">
+    <button type="button" class="btn btn-primary btn-lg">Profile</button>
+</a>
