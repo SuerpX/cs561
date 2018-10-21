@@ -1,3 +1,9 @@
+body,html {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
 .container {
   max-width: 960px;
 }
@@ -24,10 +30,15 @@
 
 .first-introduce {
 	position: relative;
-	background: url(../image/osu.jpg) no-repeat center center;
-	background-size: cover；
-}
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 
+}
+.inside-box{
+  top:30%;
+}
 /*Extra*/
 .btn-primary,
 .btn-primary:hover,
