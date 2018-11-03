@@ -5,6 +5,7 @@ import { User } from '../_models';
 import { UserService } from '../_services';
 
 @Component({templateUrl: 'home.component.html'})
+
 export class HomeComponent implements OnInit {
     currentUser: User;
     //users: User[] = [];
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('on init');
+        //console.log('on init');
         this.currentUserId = localStorage.getItem('currentUserId');
         //this.currentUserId = "linzhe";
         this.getUserbyuserId(this.currentUserId);
@@ -32,11 +33,11 @@ export class HomeComponent implements OnInit {
     getUserbyuserId(userId: string){
         this.userService.getById(this.currentUserId).pipe(first()).subscribe(user => {
             this.currentUser=user;
-            console.log(this.currentUser);
+            //console.log(this.currentUser);
             localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-            console.log("get currentUser");
-            console.log(localStorage.getItem('currentUser'));
-            console.log(this.currentUser);
+            //console.log("get currentUser");
+            //console.log(localStorage.getItem('currentUser'));
+            //console.log(this.currentUser);
             if (this.currentUser.finishRegister==0){
                 this.router.navigate(['profile']);
             }
