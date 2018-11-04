@@ -27,7 +27,7 @@
         $db = $database->connect();
 
         $post = new Post($db);
-        $result = $post->readUser($onid);
+        $result = $post->read($onid, 'userInfo', 'userId');
 
         $num = $result->rowCount();
 
