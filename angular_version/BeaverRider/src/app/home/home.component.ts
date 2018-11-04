@@ -7,8 +7,13 @@ import { UserService } from '../_services';
 @Component({templateUrl: 'home.component.html'})
 
 export class HomeComponent implements OnInit {
+    
     currentUser: User;
-    //users: User[] = [];
+
+    switch_flag: number = 1;
+    post_active: string = 'active';
+    request_active: string = '';
+
     currentUserId: string;
 
     constructor(private userService: UserService, private router: Router) {
@@ -58,6 +63,18 @@ export class HomeComponent implements OnInit {
         localStorage.clear();
         //this.router.navigate(['']);
         window.location.href="http://web.engr.oregonstate.edu/~hezhi/beaverrider"
+    }
+
+    switch_request(): void{
+        this.switch_flag = 0;
+        this.post_active = '';
+        this.request_active = 'active';
+    }
+
+    switch_post(): void{
+        this.switch_flag = 1;
+        this.post_active = 'active';
+        this.request_active = '';
     }
 
 
