@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04ecdca8-dd92-4258-a5c2-20bf3ff8ce0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/db_conn/order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/api/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/read.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/read.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_conn/DatabaseUserInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/db_conn/DatabaseUserInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_conn/post.php" beforeDir="false" afterPath="$PROJECT_DIR$/db_conn/post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,14 +64,14 @@
         <counts>
           <entry key="css" value="30" />
           <entry key="htaccess" value="113" />
-          <entry key="html" value="1095" />
+          <entry key="html" value="1096" />
           <entry key="php" value="6367" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="30" />
-          <entry key="HTML" value="1095" />
+          <entry key="HTML" value="1096" />
           <entry key="PHP" value="6335" />
           <entry key="SQL" value="32" />
           <entry key="htaccess" value="113" />
@@ -101,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file:///private/var/folders/3_/rv4jjbf90kv1__00_0m_14_40000gn/T/5c5f6380-1028-4105-9d93-77f6f66a68f3/nfs/stak/users/hezhi/public_html/db_conn/order.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
+            <state relative-caret-position="1620">
               <caret line="108" column="26" lean-forward="true" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
             </state>
           </provider>
@@ -128,8 +122,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="96" column="6" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
+            <state relative-caret-position="633">
+              <caret line="109" column="7" selection-start-line="109" selection-start-column="7" selection-end-line="109" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -312,12 +306,12 @@
       <workItem from="1539994518537" duration="26000" />
       <workItem from="1540109835505" duration="362000" />
       <workItem from="1541285083916" duration="2000" />
-      <workItem from="1541285110288" duration="11939000" />
+      <workItem from="1541285110288" duration="12201000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56466000" />
+    <option name="totallyTimeSpent" value="56728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="0" width="1920" height="1080" extended-state="0" />
@@ -468,13 +462,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///private/var/folders/3_/rv4jjbf90kv1__00_0m_14_40000gn/T/5c5f6380-1028-4105-9d93-77f6f66a68f3/nfs/stak/users/hezhi/public_html/db_conn/order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="108" column="26" lean-forward="true" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///private/var/folders/3_/rv4jjbf90kv1__00_0m_14_40000gn/T/5c5f6380-1028-4105-9d93-77f6f66a68f3/nfs/stak/users/hezhi/public_html/api/request_order.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="574">
@@ -482,10 +469,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///private/var/folders/3_/rv4jjbf90kv1__00_0m_14_40000gn/T/5c5f6380-1028-4105-9d93-77f6f66a68f3/nfs/stak/users/hezhi/public_html/db_conn/order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="108" column="26" lean-forward="true" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="96" column="6" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
+        <state relative-caret-position="633">
+          <caret line="109" column="7" selection-start-line="109" selection-start-column="7" selection-end-line="109" selection-end-column="7" />
         </state>
       </provider>
     </entry>
