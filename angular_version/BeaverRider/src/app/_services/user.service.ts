@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserService {
+
     constructor(private http: HttpClient) { }
 
     getAll() {

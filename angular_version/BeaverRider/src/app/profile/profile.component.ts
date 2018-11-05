@@ -23,7 +23,8 @@ export class ProfileComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private userService: UserService,
-        private alertService: AlertService) { }
+        private alertService: AlertService
+    ) { }
 
     ngOnInit() {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -49,15 +50,15 @@ export class ProfileComponent implements OnInit {
             return;
         }
 
-        console.log('profileForm.value')
-        console.log(this.profileForm.value);
+        //console.log('profileForm.value')
+        //console.log(this.profileForm.value);
         this.profileForm.value.finishRegister = 1;
 
         this.loading = true;
         this.userService.update(this.profileForm.value)
             .pipe(first())
             .subscribe(
-                data => {
+                success => {
                     this.alertService.success('Update profile successful', true);
                     console.log('update successful');
                     this.router.navigate(['']);

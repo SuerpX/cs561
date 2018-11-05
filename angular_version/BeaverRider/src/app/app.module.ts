@@ -15,7 +15,8 @@ import { OsuloginComponent } from './osulogin/osulogin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PostListComponent } from './post-list/post-list.component';;
 import { PostDetailComponent } from './post-detail/post-detail.component'
-
+;
+import { NewPostComponent } from './new-post/new-post.component'
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { PostDetailComponent } from './post-detail/post-detail.component'
         OsuloginComponent,
         ProfileComponent,
         PostListComponent ,
-        PostDetailComponent   
+        PostDetailComponent ,
+        NewPostComponent  
     ],
     providers: [
         AuthGuard,
