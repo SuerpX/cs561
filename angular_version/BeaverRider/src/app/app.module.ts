@@ -17,7 +17,8 @@ import { PostListComponent } from './post-list/post-list.component';;
 import { PostDetailComponent } from './post-detail/post-detail.component'
 ;
 import { NewPostComponent } from './new-post/new-post.component'
-
+;
+import { UpdatePostComponent } from './update-post/update-post.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -35,7 +36,8 @@ import { NewPostComponent } from './new-post/new-post.component'
         ProfileComponent,
         PostListComponent ,
         PostDetailComponent ,
-        NewPostComponent  
+        NewPostComponent ,
+        UpdatePostComponent 
     ],
     providers: [
         AuthGuard,

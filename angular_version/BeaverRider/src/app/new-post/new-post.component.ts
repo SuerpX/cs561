@@ -27,18 +27,18 @@ export class NewPostComponent implements OnInit {
 
   ngOnInit() {
       this.postForm = this.formBuilder.group({
-        post_orderid: [this.newPost.post_orderid, Validators.required],
-        post_userid: [this.newPost.post_userid, Validators.required],
-        departure_location: [this.newPost.departure_location, Validators.required],
-        destination_location: [this.newPost.destination_location, Validators.required],
-        departure_time: [this.newPost.departure_time, Validators.required],
-        post_time: [this.newPost.post_time],
-        remarks: [this.newPost.remarks, Validators.required],
-        available_seats: [this.newPost.available_seats, Validators.required],
-        available: [this.newPost.available],
-        finished: [this.newPost.finished],
-        waitlist: [this.newPost.waitlist],
-        acceptlist: [this.newPost.acceptlist]
+        post_orderid: [''],
+        post_userid: [''],
+        departure_location: ['', Validators.required],
+        destination_location: ['', Validators.required],
+        departure_time: ['', Validators.required],
+        post_time: [''],
+        remarks: ['', Validators.required],
+        available_seats: [null, Validators.required],
+        available: [],
+        finished: [],
+        waitlist: [],
+        acceptlist: []
       });
   }
 

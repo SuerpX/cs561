@@ -24,3 +24,9 @@
 <br><br>
 
 <button type="button" class="btn btn-primary" routerLink="">Back</button>
+
+<br><br>
+
+<button  *ngIf='postDetail' type="button" class="btn btn-primary" routerLink="/updatepost/{{postDetail.post_orderid}}">Update</button>
+
+
