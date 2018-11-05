@@ -1,0 +1,26 @@
+<p>
+  post-detail works!
+</p>
+
+
+<div *ngIf='postDetail'>
+    {{postDetail.post_orderid}}
+    {{postDetail.post_userid}}
+    {{postDetail.departure_location}}
+    {{postDetail.destination_location}}
+    {{postDetail.departure_time}}
+    {{postDetail.post_time}}
+    {{postDetail.remarks}}
+    {{postDetail.available_seats}}
+    {{postDetail.available}}
+    {{postDetail.finished}}
+    {{postDetail.waitlist}}
+    {{postDetail.acceptlist}}
+</div>
+
+
+
+
+<br><br>
+
+<button type="button" class="btn btn-primary" routerLink="">Back</button>

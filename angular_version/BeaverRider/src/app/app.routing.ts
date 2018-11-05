@@ -6,6 +6,7 @@ import { RegisterComponent } from './register';
 import { AuthGuard } from './_guards';
 import { OsuloginComponent } from './osulogin';
 import { ProfileComponent } from "./profile";
+import { PostDetailComponent } from "./post-detail";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'osulogin', component: OsuloginComponent },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+    { path: 'postdetail/:orderid', component: PostDetailComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

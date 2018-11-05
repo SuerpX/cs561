@@ -14,8 +14,8 @@ export class UserService {
     }
 
     getById(userId: string): Observable<User> {
-        console.log('url');
-        console.log(`${environment.apiUrl}/users/` + userId);
+        //console.log('url');
+        //console.log(`${environment.apiUrl}/users/` + userId);
         return this.http.get<User>(`${environment.apiUrl}/users/` + userId);
     }
 

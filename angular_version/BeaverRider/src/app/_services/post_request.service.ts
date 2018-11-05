@@ -10,10 +10,15 @@ export class PostRequestService {
     constructor(private http: HttpClient) { }
 
     getPostList(){
-        return this.http.get<Post[]>(`${environment.apiUrl}/request_order.php?view=request_order_all`);
+        return this.http.get<Post[]>(`${environment.apiUrl}/post_order.php?view=post_order_all`);
     }
 
     getRequestList(){
         return this.http.get<Post[]>(`${environment.apiUrl}/request`);
     }
+
+    getPostDetail(orderid: string){
+        return this.http.get<Post>(`${environment.apiUrl}/post_order.php?view=post_info&postId=` + orderid);
+    }
+
 }
