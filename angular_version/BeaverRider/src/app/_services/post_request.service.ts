@@ -39,7 +39,7 @@ export class PostRequestService {
         var deleteItem ={
             'postId': orderid
         }
-        return this.http.post('${environment.apiUrl}/post_order.php?view=delete', deleteItem);
+        return this.http.post(`${environment.apiUrl}/post_order.php?view=delete`, deleteItem);
     }
 
 }
