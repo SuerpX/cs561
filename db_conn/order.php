@@ -27,8 +27,120 @@ class Order
 
     }
 
+    public function readAll($tableName){
+        // Create query
+        try {
+            $query = "SELECT * FROM ".$tableName." WHERE available=1 And finished=0";
+            $result = $this->conn->query($query);
+            return $result;
+
+        }catch (PDOException $e){
+            echo 'error'.$e;
+        }
+
+    }
+    public function readBatch($departure, $destination, $tableName){
+        // Create query
+        try {
+            $query = "SELECT * FROM ".$tableName." WHERE departure_location='".$departure."' And destination_location='".$destination."' And available=1 And finished=0";
+            $result = $this->conn->query($query);
+            return $result;
+
+        }catch (PDOException $e){
+            echo 'error'.$e;
+        }
+    }
+    public function updatePostOrderInfo($info){
+        //    print_r($info);
+
+
+        try {
+            $update = "UPDATE postInfo SET 
+post_userid=?, 
+departure_location=?, 
+destination_location=?, 
+departure_time=?, 
+post_time=?, 
+remarks=?, 
+available_seats=?, 
+available=?, 
+finished=?
+WHERE post_orderid=?";
+            $stmt = $this->conn->prepare($update);
+            $stmt->execute([
+                $info->post_userid,
+                $info->departure_location,
+                $info->destination_location,
+                $info->departure_time,
+                $info->post_time,
+                $info->remarks,
+                $info->available_seats,
+                $info->available,
+                $info->finished,
+                $info->post_orderid,
+            ]);
+
+            return "success";
+
+        }catch (PDOException $e){
+            return "error".$e;
+        }
+        //  return "success";
+    }
+
+    public function newPostOrder($info){
+        $order_id = time().$info->post_userid;
+        try {
+            $update = "INSERT INTO postInfo (
+post_orderid, 
+post_userid, 
+departure_location, 
+destination_location, 
+departure_time, 
+post_time, 
+remarks, 
+available_seats, 
+available,
+finished)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $this->conn->prepare($update);
+            //print_r($stmt);
+            $stmt->execute([
+                $order_id,
+                $info->post_userid,
+                $info->departure_location,
+                $info->destination_location,
+                $info->departure_time,
+                $info->post_time,
+                $info->remarks,
+                $info->available_seats,
+                $info->available,
+                $info->finished,
+            ]);
+
+            return "success";
+
+        }catch (PDOException $e){
+            return "error".$e;
+        }
+    }
+
+    public function deletePostOrder($postId){
+        try {
+
+            $del = "DELETE FROM postInfo WHERE post_orderid='".$postId."'";
+        //    print_r($del);
+            $stmt = $this->conn->prepare($del);
+            $stmt->execute();
+            return "success";
+
+        }catch (PDOException $e){
+            return "error".$e;
+        }
+    }
     public function updateRequestOrderInfo($info){
         //    print_r($info);
+
 
         try {
             $update = "UPDATE requestInfo SET 
@@ -38,7 +150,7 @@ destination_location=?,
 departure_time=?, 
 post_time=?, 
 remarks=?, 
-available_seats=?, 
+people_number=?, 
 available=?, 
 finished=?
 WHERE request_orderid=?";
@@ -50,7 +162,7 @@ WHERE request_orderid=?";
                 $info->departure_time,
                 $info->post_time,
                 $info->remarks,
-                $info->available_seats,
+                $info->people_number,
                 $info->available,
                 $info->finished,
                 $info->request_orderid,
@@ -65,6 +177,7 @@ WHERE request_orderid=?";
     }
 
     public function newRequestOrder($info){
+        $order_id = time().$info->request_userid;
         try {
             $update = "INSERT INTO requestInfo (
 request_orderid, 
@@ -74,21 +187,21 @@ destination_location,
 departure_time, 
 post_time, 
 remarks, 
-available_seats, 
+people_number, 
 available,
 finished)
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->conn->prepare($update);
             //print_r($stmt);
             $stmt->execute([
-                $info->request_orderid,
+                $order_id,
                 $info->request_userid,
                 $info->departure_location,
                 $info->destination_location,
                 $info->departure_time,
                 $info->post_time,
                 $info->remarks,
-                $info->available_seats,
+                $info->people_number,
                 $info->available,
                 $info->finished,
             ]);
@@ -97,6 +210,30 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         }catch (PDOException $e){
             return "error".$e;
+        }
+    }
+
+    public function deleteRequestOrder($requestId){
+        try {
+
+            $del = "DELETE FROM requestInfo WHERE request_orderid='".$requestId."'";
+            print_r($del);
+            $stmt = $this->conn->prepare($del);
+            $stmt->execute();
+            return "success";
+
+        }catch (PDOException $e){
+            return "error".$e;
+        }
+    }
+    public function activitedOrder($tableName, $tableUserName, $userId){
+        try {
+            $query = "SELECT * FROM ".$tableName." WHERE ".$tableUserName."='".$userId."' And available=1 And finished=0";
+            $result = $this->conn->query($query);
+            return $result;
+
+        }catch (PDOException $e){
+            echo 'error'.$e;
         }
     }
 }
