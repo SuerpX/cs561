@@ -44,6 +44,6 @@ export class AppComponent implements OnInit {
         //this.userService.logout();
         localStorage.clear();
         //this.router.navigate(['']);
-        window.location.href="http://web.engr.oregonstate.edu/~hezhi/beaverrider"
+        window.location.href="https://login.oregonstate.edu/idp/logout.jsp"
     }
  }

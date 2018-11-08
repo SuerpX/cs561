@@ -1,0 +1,32 @@
+<p>
+  request-detail works!
+</p>
+
+
+<div *ngIf='requestDetail'>
+    {{requestDetail.request_orderid}}
+    {{requestDetail.request_userid}}
+    {{requestDetail.departure_location}}
+    {{requestDetail.destination_location}}
+    {{requestDetail.departure_time}}
+    {{requestDetail.post_time}}
+    {{requestDetail.remarks}}
+    {{requestDetail.people_number}}
+    {{requestDetail.available}}
+    {{requestDetail.finished}}
+    {{requestDetail.waitlist}}
+    {{requestDetail.acceptlist}}
+</div>
+
+<br><br>
+
+<button type="button" class="btn btn-primary" routerLink="">Back</button>
+
+
+<br><br>
+
+<button  *ngIf='requestDetail' type="button" class="btn btn-primary" routerLink="/updaterequest/{{requestDetail.request_orderid}}">Update</button>
+
+<br><br>
+
+<button  *ngIf='requestDetail' type="button" class="btn btn-primary" (click)="requestDelete()">Delete</button>

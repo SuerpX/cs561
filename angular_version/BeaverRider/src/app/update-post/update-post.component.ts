@@ -69,7 +69,7 @@ export class UpdatePostComponent implements OnInit {
 
 	getPostDetailwithform(){
 		let orderid = this.route.snapshot.paramMap.get('orderid');
-		console.log(orderid);
+		//console.log(orderid);
 		this.postrequestservice.getPostDetail(orderid).pipe(first()).subscribe(post => {
 			this.updatePost = post;
 			this.postForm = this.formBuilder.group({
@@ -86,7 +86,7 @@ export class UpdatePostComponent implements OnInit {
 				waitlist: [this.updatePost.waitlist],
 				acceptlist: [this.updatePost.acceptlist]
 			});
-			console.log(this.updatePost);
+			//console.log(this.updatePost);
 		});
 	}
 }

@@ -15,14 +15,14 @@ export class PostListComponent implements OnInit {
 
   postList: Post[] = [];
 
-  constructor(private post_requestService: PostRequestService, private router: Router ) { }
+  constructor(private postrequestService: PostRequestService, private router: Router ) { }
 
   ngOnInit() {
     this.getPostList();
   }
 
   getPostList(){
-    this.post_requestService.getPostList().pipe(first()).subscribe(postList => {
+    this.postrequestService.getPostList().pipe(first()).subscribe(postList => {
       this.postList = postList;
     });
   }

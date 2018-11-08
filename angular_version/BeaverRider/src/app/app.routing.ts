@@ -1,5 +1,4 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
-
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
@@ -9,6 +8,10 @@ import { ProfileComponent } from "./profile";
 import { PostDetailComponent } from "./post-detail";
 import { NewPostComponent } from "./new-post";
 import { UpdatePostComponent } from "./update-post";
+import { NewRequestComponent } from "./new-request";
+import { UpdateRequestComponent } from "./update-request";
+import { UserCenterComponent } from "./user-center";
+import { RequestDetailComponent } from "./request-detail";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -19,6 +22,10 @@ const appRoutes: Routes = [
     { path: 'postdetail/:orderid', component: PostDetailComponent },
     { path: 'newpost', component: NewPostComponent },
     { path: 'updatepost/:orderid', component: UpdatePostComponent },
+    { path: 'newrequest', component: NewRequestComponent },
+    { path: 'updaterequest/:orderid', component: UpdateRequestComponent },
+    { path: 'usercenter', component: UserCenterComponent },
+    { path: 'requestdetail/:orderid', component: RequestDetailComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

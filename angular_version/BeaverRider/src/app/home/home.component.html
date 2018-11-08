@@ -14,21 +14,7 @@
 </div>
 
 <div *ngIf='switch_flag == 0'>
-
-<h1>Home Page</h1>
-<p>You're logged in with beaver rider</p>
-
-<p *ngIf="currentUser">{{currentUser.userId}}  {{currentUser.email}}  {{currentUser.firstname}}  {{currentUser.lastname}}</p>
-<a (click)="userLogout()" class="text-primary">logout</a>
-
-
-<br><br>
-
-<a [routerLink]="['/profile']">
-    <button type="button" class="btn btn-primary btn-lg">Profile</button>
-</a>
-
-
+    <app-request-list></app-request-list>
 </div>
 
 
@@ -37,4 +23,10 @@
 
 <a [routerLink]="['/newpost']">
     <button type="button" class="btn btn-primary btn-lg">New Post</button>
+</a>
+
+<br><br>
+
+<a [routerLink]="['/newrequest']">
+    <button type="button" class="btn btn-primary btn-lg">New Request</button>
 </a>

@@ -1,0 +1,19 @@
+<p>
+  driver-active-post works!
+</p>
+
+<div class="row" *ngIf='postList != []'>
+    <div *ngFor="let post of postList" class="col" style="height: 18rem;">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{post.departure_location}} to {{post.destination_location}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{post.post_time}} created</h6>
+            <!--text-truncate-->
+            <p class="card-text">From {{post.departure_location}} to {{post.destination_location}} in {{post.departure_time}}, post by {{post.post_userid}}, and it still have {{post.available_seats}} seats available.</p>
+            <a routerLink="/postdetail/{{post.post_orderid}}" class="card-link">See Detail</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+    </div>
+  </div>
+

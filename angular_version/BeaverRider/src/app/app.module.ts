@@ -14,11 +14,16 @@ import { RegisterComponent } from './register';;
 import { OsuloginComponent } from './osulogin/osulogin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PostListComponent } from './post-list/post-list.component';;
-import { PostDetailComponent } from './post-detail/post-detail.component'
+import { PostDetailComponent } from './post-detail/post-detail.component';
+import { NewPostComponent } from './new-post/new-post.component';
+import { UpdatePostComponent } from './update-post/update-post.component';
+import { UserCenterComponent } from './user-center/user-center.component';;
+import { DriverActivePostComponent } from './driver-active-post/driver-active-post.component';
+import { RequestListComponent } from './request-list/request-list.component';
+import { RequestDetailComponent } from './request-detail/request-detail.component';;
+import { NewRequestComponent } from './new-request/new-request.component'
 ;
-import { NewPostComponent } from './new-post/new-post.component'
-;
-import { UpdatePostComponent } from './update-post/update-post.component'
+import { UpdateRequestComponent } from './update-request/update-request.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -37,7 +42,13 @@ import { UpdatePostComponent } from './update-post/update-post.component'
         PostListComponent ,
         PostDetailComponent ,
         NewPostComponent ,
-        UpdatePostComponent 
+        UpdatePostComponent ,
+        UserCenterComponent,
+        DriverActivePostComponent ,
+        RequestListComponent ,
+        RequestDetailComponent ,
+        NewRequestComponent ,
+        UpdateRequestComponent
     ],
     providers: [
         AuthGuard,
