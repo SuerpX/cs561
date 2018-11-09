@@ -252,7 +252,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     public function deleteRequestOrder($requestId){
         try {
 
-            $del = "DELETE FROM requestInfo WHERE request_orderid='".$requestId."'";;
+            $del = "DELETE FROM requestInfo WHERE request_orderid='".$requestId."'";
             $stmt = $this->conn->prepare($del);
             $stmt->execute();
             return "success";
