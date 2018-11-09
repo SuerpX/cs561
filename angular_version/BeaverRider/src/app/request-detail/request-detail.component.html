@@ -4,18 +4,18 @@
 
 
 <div *ngIf='requestDetail'>
-    {{requestDetail.request_orderid}}
-    {{requestDetail.request_userid}}
-    {{requestDetail.departure_location}}
-    {{requestDetail.destination_location}}
-    {{requestDetail.departure_time}}
-    {{requestDetail.post_time}}
-    {{requestDetail.remarks}}
-    {{requestDetail.people_number}}
-    {{requestDetail.available}}
-    {{requestDetail.finished}}
-    {{requestDetail.waitlist}}
-    {{requestDetail.acceptlist}}
+    <p>{{requestDetail.request_orderid}}</p>
+    <p><a routerLink="/userpubilcprofile/{{requestDetail.request_userid}}">{{requestDetail.request_userid}}</a></p>
+    <p>{{requestDetail.departure_location}}</p>
+    <p>{{requestDetail.destination_location}}</p>
+    <p>{{requestDetail.departure_time}}</p>
+    <p>{{requestDetail.post_time}}</p>
+    <p>{{requestDetail.remarks}}</p>
+    <p>{{requestDetail.people_number}}</p>
+    <p>{{requestDetail.available}}</p>
+    <p>{{requestDetail.finished}}</p>
+    <p>{{requestDetail.waitlist}}</p>
+    <p>{{requestDetail.acceptlist}}</p>
 </div>
 
 <br><br>
@@ -23,10 +23,16 @@
 <button type="button" class="btn btn-primary" routerLink="">Back</button>
 
 
+
+<div *ngIf='requestDetail'>
+<div *ngIf="currentUserId == requestDetail.request_userid">
 <br><br>
 
-<button  *ngIf='requestDetail' type="button" class="btn btn-primary" routerLink="/updaterequest/{{requestDetail.request_orderid}}">Update</button>
+<button type="button" class="btn btn-primary" routerLink="/updaterequest/{{requestDetail.request_orderid}}">Update</button>
 
 <br><br>
 
-<button  *ngIf='requestDetail' type="button" class="btn btn-primary" (click)="requestDelete()">Delete</button>
+<button type="button" class="btn btn-primary" (click)="requestDelete()">Delete</button>
+
+</div>
+</div>

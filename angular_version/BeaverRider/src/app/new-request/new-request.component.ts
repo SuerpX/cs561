@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService, PostRequestService } from '../_services';
-import { Post } from '../_models';
+import { Post, Request } from '../_models';
 import { getLocaleTimeFormat } from '@angular/common';
 
 @Component({
@@ -27,20 +27,24 @@ export class NewRequestComponent implements OnInit {
 
   ngOnInit() {
     this.requestForm = this.formBuilder.group({
-      request_orderid: [''],
-      request_userid: [''],
-      departure_location: ['', Validators.required],
-      destination_location: ['', Validators.required],
-      departure_time: ['', Validators.required],
-      //11/5/2018, 5:00:10 PM
-      //2018-11-07 16:34:00
-      post_time: [''],
-      remarks: ['', Validators.required],
-      people_number: [null, Validators.required],
-      available: [],
-      finished: [],
-      waitlist: [],
-      acceptlist: []
+        request_orderid: [''],
+        request_userid: [''],
+        departure_location: ['', Validators.required],
+        destination_location: ['', Validators.required],
+        departure_city: ['', Validators.required],
+        departure_state: ['', Validators.required],
+        destination_city: ['', Validators.required],
+        destination_state: ['', Validators.required],
+        departure_time: ['', Validators.required],
+        //11/5/2018, 5:00:10 PM
+        //2018-11-07 16:34:00
+        post_time: [''],
+        remarks: ['', Validators.required],
+        people_number: [null, Validators.required],
+        available: [],
+        finished: [],
+        waitlist: [],
+        acceptlist: []
   });
   }
 

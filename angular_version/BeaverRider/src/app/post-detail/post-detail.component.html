@@ -27,8 +27,15 @@
 
 <br><br>
 
-<button  *ngIf='postDetail' type="button" class="btn btn-primary" routerLink="/updatepost/{{postDetail.post_orderid}}">Update</button>
+<div *ngIf='postDetail'>
+<div *ngIf="currentUserId == postDetail.post_userid">
+
+
+<button type="button" class="btn btn-primary" routerLink="/updatepost/{{postDetail.post_orderid}}">Update</button>
 
 <br><br>
 
-<button  *ngIf='postDetail' type="button" class="btn btn-primary" (click)="postDelete()">Delete</button>
+<button type="button" class="btn btn-primary" (click)="postDelete()">Delete</button>
+
+</div>
+</div>

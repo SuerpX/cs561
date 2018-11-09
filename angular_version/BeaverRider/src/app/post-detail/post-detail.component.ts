@@ -13,12 +13,14 @@ import { AlertService, PostRequestService } from '../_services';
 export class PostDetailComponent implements OnInit {
 
   postDetail: Post;
+  currentUserId: string;
 
   constructor(private postrequestService: PostRequestService, private router: Router, private alertService: AlertService, private route: ActivatedRoute) { }
 
 	ngOnInit() {
 		this.getPostDetail();
 		//console.log(this.postDetail);
+		this.currentUserId = localStorage.getItem('currentUserId');
 	}
 
 	getPostDetail(){

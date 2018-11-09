@@ -12,7 +12,8 @@ import { AlertService, PostRequestService } from '../_services';
 })
 export class RequestDetailComponent implements OnInit {
 
-  requestDetail: Request;
+	requestDetail: Request;
+	currentUserId: string;
 
   constructor(
     private postrequestService: PostRequestService,
@@ -20,7 +21,8 @@ export class RequestDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getRequestDetail();
+		this.getRequestDetail();
+		this.currentUserId = localStorage.getItem('currentUserId');
   }
 
   getRequestDetail(){

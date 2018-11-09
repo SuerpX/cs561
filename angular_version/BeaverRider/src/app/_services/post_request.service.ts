@@ -14,6 +14,22 @@ export class PostRequestService {
         return this.http.get<Post[]>(`${environment.apiUrl}/post_order.php?view=post_order_all`);
     }
 
+    getPostListBycondition(){
+        return this.http.get<Post[]>(`${environment.apiUrl}/post_order.php?view=post_order_all`);
+    }
+
+    getRequestListBycondition(){
+        return this.http.get<Request[]>(`${environment.apiUrl}/request_order.php?view=request_order_all`);
+    }
+
+    getPostListByUserId(orderid: string){
+        return this.http.get<Post[]>(`${environment.apiUrl}/post_order.php?view=activited_order&userId=` + orderid);
+    }
+
+    getRequestListByUserId(orderid: string){
+        return this.http.get<Request[]>(`${environment.apiUrl}/request_order.php?view=activited_order&userId=` + orderid);
+    }
+
     getRequestList(){
         return this.http.get<Request[]>(`${environment.apiUrl}/request_order.php?view=request_order_all`);
     }
@@ -66,10 +82,6 @@ export class PostRequestService {
         return this.http.post(`${environment.apiUrl}/request_order.php?view=delete`, deleteItem);
     }
 
-    getActivePostByUser(post_userid: string){
-        return this.http.get<Post[]>(`${environment.apiUrl}/post_order.php?view=post_order_all`);
-    }
-
     getAllPostByUser(post_userid: string){}
 
     getComfirmedRequestByUser(post_userid: string){
@@ -80,5 +92,31 @@ export class PostRequestService {
     getWaitlistRequestByUser(post_userid: string){}
 
     getHistoricalOrderByUser(post_userid: string){}
+
+    confirmconnect(postid: string, requestid: string){
+        var connect={
+            'postOrderId': postid,
+            'requestOrderId': requestid
+        }
+        return this.http.post(`${environment.apiUrl}/connect_orders.php?view=confirmed`, connect);
+    }
+
+    inviterequest(postid: string, requestid: string, postuserid: string){
+        var connect={
+            'userid': postuserid,
+            'postOrderId': postid,
+            'requestOrderId': requestid
+        }
+        return this.http.post(`${environment.apiUrl}/connect_orders.php?view=newRequestWaitList`, connect);
+    }
+
+    joinpost(postid: string, requestid: string, requestuserid: string){
+        var connect={
+            'userid': requestuserid,
+            'postOrderId': postid,
+            'requestOrderId': requestid
+        }
+        return this.http.post(`${environment.apiUrl}/connect_orders.php?view=newPostWaitList`, connect);
+    }
 
 }

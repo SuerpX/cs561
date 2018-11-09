@@ -5,7 +5,6 @@ import { Post, Request } from '../_models';
 import { PostRequestService } from '../_services';
 
 
-
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
@@ -22,7 +21,7 @@ export class PostListComponent implements OnInit {
   }
 
   getPostList(){
-    this.postrequestService.getPostList().pipe(first()).subscribe(postList => {
+    this.postrequestService.getPostListBycondition().pipe(first()).subscribe(postList => {
       this.postList = postList;
     });
   }

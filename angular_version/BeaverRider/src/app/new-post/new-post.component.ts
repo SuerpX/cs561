@@ -31,6 +31,10 @@ export class NewPostComponent implements OnInit {
             post_userid: [''],
             departure_location: ['', Validators.required],
             destination_location: ['', Validators.required],
+            departure_city: ['', Validators.required],
+            departure_state: ['', Validators.required],
+            destination_city: ['', Validators.required],
+            destination_state: ['', Validators.required],
             departure_time: ['', Validators.required],
             //11/5/2018, 5:00:10 PM
             //2018-11-07 16:34:00

@@ -23,7 +23,8 @@ import { RequestListComponent } from './request-list/request-list.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';;
 import { NewRequestComponent } from './new-request/new-request.component';
 import { UpdateRequestComponent } from './update-request/update-request.component';
-import { UserPublicProfileComponent } from './user-public-profile/user-public-profile.component';
+import { UserPublicProfileComponent } from './user-public-profile/user-public-profile.component';;
+import { PostListInviteComponent } from './post-list-invite/post-list-invite.component'
 
 @NgModule({
     imports: [
@@ -50,8 +51,9 @@ import { UserPublicProfileComponent } from './user-public-profile/user-public-pr
         RequestDetailComponent ,
         NewRequestComponent,
         UpdateRequestComponent,
-        UserPublicProfileComponent
-        ],
+        UserPublicProfileComponent,
+        PostListInviteComponent        
+    ],
     providers: [
         AuthGuard,
         AlertService,

@@ -25,7 +25,7 @@ export class DriverActivePostComponent implements OnInit {
 
   getActivePostList(){
     let post_userid = localStorage.getItem('currentUserId');
-    this.postrequestService.getActivePostByUser(post_userid).pipe(first()).subscribe(postList => {
+    this.postrequestService.getPostListByUserId(post_userid).pipe(first()).subscribe(postList => {
       this.postList = postList;
     });
   }
