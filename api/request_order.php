@@ -32,14 +32,21 @@ switch ($_GET['view']){
     case 'activited_order':
         activetiedOrder($_GET['userId']);
         break;
+    case 'match':
+        matchOrder($_GET['startTime'],$_GET['endTime'],$_GET['departure'],$_GET['destination']);
+        break;
 
 
 }
-function orderInfo($oderId){
+function conn(){
     $database = new DatabaseUserInfo();
     $db = $database->connect();
 
     $order = new Order($db);
+    return $order;
+}
+function orderInfo($oderId){
+    $order = conn();
     $result = $order->read($oderId, 'requestInfo', 'request_orderId');
 
     packResult($result, 0);
@@ -48,9 +55,7 @@ function orderInfo($oderId){
 
 
 function updateRequestOrder(){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
-    $order = new Order($db);
+    $order = conn();
 
     $input = file_get_contents('php://input');
     $object = json_decode($input);
@@ -58,9 +63,7 @@ function updateRequestOrder(){
     //   print_r($mess);
 }
 function newRequestOrder(){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
-    $order = new Order($db);
+    $order = conn();
 
     $input = file_get_contents('php://input');
     $object = json_decode($input);
@@ -68,28 +71,20 @@ function newRequestOrder(){
     //   print_r($mess);
 }
 function requestOrderAll(){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
-
-    $order = new Order($db);
+    $order = conn();
     $result = $order->readAll( 'requestInfo');
 
     packResult($result, 1);
 }
 
 function requestOrderBatch($departure, $destination){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
-
-    $order = new Order($db);
+    $order = conn();
     $result = $order->readBatch($departure, $destination, 'requestInfo');
 
     packResult($result, 1);
 }
 function deteleRequestOrder(){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
-    $order = new Order($db);
+    $order = conn();
 
     $input = file_get_contents('php://input');
     $object = json_decode($input);
@@ -98,11 +93,14 @@ function deteleRequestOrder(){
 
 }
 function activetiedOrder($userId){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
-
-    $order = new Order($db);
+    $order = conn();
     $result = $order->activitedOrder("requestInfo","request_userId", $userId);
+
+    packResult($result, 1);
+}
+function matchOrder($st, $et, $dep, $des){
+    $order = conn();
+    $result = $order->matchOrder("requestInfo", $st, $et, $dep, $des);
 
     packResult($result, 1);
 }
@@ -117,8 +115,8 @@ function packResult($result, $isList){
             extract($row);
 
             $post_item = array(
-                'post_orderid' => $request_orderid,
-                'post_userid' => $request_userid,
+                'request_orderid' => $request_orderid,
+                'request_userid' => $request_userid,
                 'departure_location' => $departure_location,
                 'destination_location' => $destination_location,
                 'departure_time' => $departure_time,
@@ -126,7 +124,11 @@ function packResult($result, $isList){
                 'remarks' => $remarks,
                 'people_number' => $people_number,
                 'available' => $available,
-                'finished' => $finished
+                'finished' => $finished,
+                'departure_city' => $departure_city,
+                'departure_state' => $departure_state,
+                'destination_city' => $destination_city,
+                'destination_state' => $destination_state
             );
             array_push($posts_arr['data'], $post_item);
         }

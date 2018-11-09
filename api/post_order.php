@@ -32,14 +32,22 @@ switch ($_GET['view']){
     case 'activited_order':
         activetiedOrder($_GET['userId']);
         break;
+    case 'match':
+        matchOrder($_GET['startTime'],$_GET['endTime'],$_GET['departure'],$_GET['destination']);
+        break;
 
 
 }
-function orderInfo($oderId){
+function conn(){
     $database = new DatabaseUserInfo();
     $db = $database->connect();
 
     $order = new Order($db);
+    return $order;
+}
+function orderInfo($oderId){
+
+    $order = conn();
     $result = $order->read($oderId, 'postInfo', 'post_orderId');
 
     packResult($result, 0);
@@ -48,9 +56,7 @@ function orderInfo($oderId){
 
 
 function updatePostOrder(){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
-    $order = new Order($db);
+    $order = conn();
 
     $input = file_get_contents('php://input');
     $object = json_decode($input);
@@ -58,9 +64,7 @@ function updatePostOrder(){
     //   print_r($mess);
 }
 function newPostOrder(){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
-    $order = new Order($db);
+    $order = conn();
 
     $input = file_get_contents('php://input');
     $object = json_decode($input);
@@ -68,28 +72,21 @@ function newPostOrder(){
     //   print_r($mess);
 }
 function postOrderAll(){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
+    $order = conn();
 
-    $order = new Order($db);
     $result = $order->readAll( 'postInfo');
 
     packResult($result, 1);
 }
 
 function postOrderBatch($departure, $destination){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
-
-    $order = new Order($db);
+    $order = conn();
     $result = $order->readBatch($departure, $destination, 'postInfo');
 
     packResult($result, 1);
 }
 function detelePostOrder(){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
-    $order = new Order($db);
+    $order = conn();
 
     $input = file_get_contents('php://input');
     $object = json_decode($input);
@@ -98,11 +95,14 @@ function detelePostOrder(){
 
 }
 function activetiedOrder($userId){
-    $database = new DatabaseUserInfo();
-    $db = $database->connect();
-
-    $order = new Order($db);
+    $order = conn();
     $result = $order->activitedOrder("postInfo","post_userId", $userId);
+
+    packResult($result, 1);
+}
+function matchOrder($st, $et, $dep, $des){
+    $order = conn();
+    $result = $order->matchOrder("postInfo", $st, $et, $dep, $des);
 
     packResult($result, 1);
 }
@@ -126,7 +126,11 @@ function packResult($result, $isList){
                 'remarks' => $remarks,
                 'available_seats' => $available_seats,
                 'available' => $available,
-                'finished' => $finished
+                'finished' => $finished,
+                'departure_city' => $departure_city,
+                'departure_state' => $departure_state,
+                'destination_city' => $destination_city,
+                'destination_state' => $destination_state
             );
             array_push($posts_arr['data'], $post_item);
         }

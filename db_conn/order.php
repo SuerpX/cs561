@@ -42,7 +42,7 @@ class Order
     public function readBatch($departure, $destination, $tableName){
         // Create query
         try {
-            $query = "SELECT * FROM ".$tableName." WHERE departure_location='".$departure."' And destination_location='".$destination."' And available=1 And finished=0";
+            $query = "SELECT * FROM ".$tableName." WHERE departure_city='".$departure."' And destination_city='".$destination."' And available=1 And finished=0";
             $result = $this->conn->query($query);
             return $result;
 
@@ -64,7 +64,11 @@ post_time=?,
 remarks=?, 
 available_seats=?, 
 available=?, 
-finished=?
+finished=?,
+departure_city=?,
+departure_state=?,
+destination_city=?,
+destination_state=?
 WHERE post_orderid=?";
             $stmt = $this->conn->prepare($update);
             $stmt->execute([
@@ -77,7 +81,12 @@ WHERE post_orderid=?";
                 $info->available_seats,
                 $info->available,
                 $info->finished,
+                $info->departure_city,
+                $info->departure_state,
+                $info->destination_city,
+                $info->destination_state,
                 $info->post_orderid,
+
             ]);
 
             return "success";
@@ -90,6 +99,7 @@ WHERE post_orderid=?";
 
     public function newPostOrder($info){
         $order_id = time().$info->post_userid;
+        print_r($info);
         try {
             $update = "INSERT INTO postInfo (
 post_orderid, 
@@ -101,8 +111,13 @@ post_time,
 remarks, 
 available_seats, 
 available,
-finished)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+finished,
+departure_city,
+departure_state,
+destination_city,
+destination_state
+)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->conn->prepare($update);
             //print_r($stmt);
             $stmt->execute([
@@ -116,6 +131,10 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $info->available_seats,
                 $info->available,
                 $info->finished,
+                $info->departure_city,
+                $info->departure_state,
+                $info->destination_city,
+                $info->destination_state,
             ]);
 
             return "success";
@@ -152,7 +171,11 @@ post_time=?,
 remarks=?, 
 people_number=?, 
 available=?, 
-finished=?
+finished=?,
+departure_city=?,
+departure_state=?,
+destination_city=?,
+destination_state=?
 WHERE request_orderid=?";
             $stmt = $this->conn->prepare($update);
             $stmt->execute([
@@ -165,6 +188,10 @@ WHERE request_orderid=?";
                 $info->people_number,
                 $info->available,
                 $info->finished,
+                $info->departure_city,
+                $info->departure_state,
+                $info->destination_city,
+                $info->destination_state,
                 $info->request_orderid,
             ]);
 
@@ -189,8 +216,13 @@ post_time,
 remarks, 
 people_number, 
 available,
-finished)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+finished,
+departure_city,
+departure_state,
+destination_city,
+destination_state
+)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->conn->prepare($update);
             //print_r($stmt);
             $stmt->execute([
@@ -204,6 +236,10 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $info->people_number,
                 $info->available,
                 $info->finished,
+                $info->departure_city,
+                $info->departure_state,
+                $info->destination_city,
+                $info->destination_state,
             ]);
 
             return "success";
@@ -216,8 +252,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     public function deleteRequestOrder($requestId){
         try {
 
-            $del = "DELETE FROM requestInfo WHERE request_orderid='".$requestId."'";
-            print_r($del);
+            $del = "DELETE FROM requestInfo WHERE request_orderid='".$requestId."'";;
             $stmt = $this->conn->prepare($del);
             $stmt->execute();
             return "success";
@@ -236,6 +271,24 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             echo 'error'.$e;
         }
     }
+    /*
+    public function waitListOrder($tableName, $tableMainKey)
+    */
+    function matchOrder($tableName, $st, $et, $dep, $des){
+        $query = "SELECT * FROM ".$tableName."
+          WHERE departure_time>'".$st."'
+         And departure_time<'".$et."'
+          And departure_city='".$dep."'
+          And destination_city='".$des."'
+          And available=1 And finished=0";
+
+        //print_r($query);
+        $result = $this->conn->query($query);
+
+        return $result;
+
+    }
+
 }
 
 

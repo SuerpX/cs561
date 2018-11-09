@@ -71,7 +71,7 @@
     xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
     xhr.send(JSON.stringify(json));
     */
-    /*
+
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function()
     {
@@ -81,20 +81,25 @@
         }
     }
     var json = {
-        'request_userid' : 'linzhe',
-        'departure_location': 'corvallis',
+        'post_userid' : 'linzhe',
+        'departure_location': '111 sw 222th st',
         'destination_location': 'portland',
         'departure_time': '2018-11-07 16:34:11',
         'post_time': '2018-11-07 16:34:00',
         'remarks' : 'test',
         'available_seats': '4',
         'available': '2',
-        'finished': '1'
+        'finished': '1',
+        'departure_city':'convallis',
+        'departure_state':'oregon',
+        'destination_city':'portland',
+        'destination_state':'oregon',
+
     };
-    xhr.open("POST","http://web.engr.oregonstate.edu/~hezhi/api/request_order.php?view=insert");
+    xhr.open("POST","http://web.engr.oregonstate.edu/~hezhi/api/post_order.php?view=insert");
     xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
     xhr.send(JSON.stringify(json));
-    */
+
     /*
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function()
@@ -189,19 +194,20 @@
     var json = {
         'request_orderid': '1541554181linzhe',
         'request_userid' : 'linzhe',
-        'departure_location': 'portland',
+        'departure_location': 'pord',
         'destination_location': 'corvallis',
-        'departure_time': '2018-11-01 16:34:11',
+        'departure_time': '2018-11-02 16:34:11',
         'post_time': '2018-11-07 16:34:00',
-        'remarks' : 'test',
+        'remarks' : 'tst',
         'people_number': '1',
         'available': '1',
-        'finished': 1
+        'finished': 0
     };
     xhr.open("POST","http://web.engr.oregonstate.edu/~hezhi/api/request_order.php?view=update");
     xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
     xhr.send(JSON.stringify(json));
     */
+
 </script>
 
 </body>

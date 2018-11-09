@@ -7,5 +7,7 @@
     <orderEntry type="module" module-name="redirect.php" />
     <orderEntry type="module" module-name="order.php" />
     <orderEntry type="module" module-name="post_order.php" />
+    <orderEntry type="module" module-name="post_order.php" />
+    <orderEntry type="module" module-name="post_order.php" />
   </component>
 </module>
