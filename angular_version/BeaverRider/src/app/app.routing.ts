@@ -12,6 +12,7 @@ import { NewRequestComponent } from "./new-request";
 import { UpdateRequestComponent } from "./update-request";
 import { UserCenterComponent } from "./user-center";
 import { RequestDetailComponent } from "./request-detail";
+import { UserPublicProfileComponent } from "./user-public-profile";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
     { path: 'updaterequest/:orderid', component: UpdateRequestComponent },
     { path: 'usercenter', component: UserCenterComponent },
     { path: 'requestdetail/:orderid', component: RequestDetailComponent },
+    { path: 'userpubilcprofile/:userid', component: UserPublicProfileComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

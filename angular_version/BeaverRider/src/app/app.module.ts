@@ -21,9 +21,10 @@ import { UserCenterComponent } from './user-center/user-center.component';;
 import { DriverActivePostComponent } from './driver-active-post/driver-active-post.component';
 import { RequestListComponent } from './request-list/request-list.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';;
-import { NewRequestComponent } from './new-request/new-request.component'
-;
-import { UpdateRequestComponent } from './update-request/update-request.component'
+import { NewRequestComponent } from './new-request/new-request.component';
+import { UpdateRequestComponent } from './update-request/update-request.component';
+import { UserPublicProfileComponent } from './user-public-profile/user-public-profile.component';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -47,9 +48,10 @@ import { UpdateRequestComponent } from './update-request/update-request.componen
         DriverActivePostComponent ,
         RequestListComponent ,
         RequestDetailComponent ,
-        NewRequestComponent ,
-        UpdateRequestComponent
-    ],
+        NewRequestComponent,
+        UpdateRequestComponent,
+        UserPublicProfileComponent
+        ],
     providers: [
         AuthGuard,
         AlertService,

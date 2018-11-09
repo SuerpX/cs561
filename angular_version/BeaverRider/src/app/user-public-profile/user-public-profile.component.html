@@ -1,0 +1,19 @@
+<p>
+  user-public-profile works!
+</p>
+
+
+<div *ngIf="user">
+
+  <p>{{user.userId}}</p>
+  <p>{{user.email}}</p>
+  <p>{{user.firstname}}</p>
+  <p>{{user.lastname}}</p>
+  <p>{{user.phoneNumber}}</p>
+  <p>{{user.address}}</p>
+
+</div>
+
+<br><br>
+
+<button type="button" class="btn btn-primary" routerLink="">Back</button>
