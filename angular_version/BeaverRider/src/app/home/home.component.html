@@ -1,31 +1,25 @@
-﻿
-<nav class="nav nav-pills nav-justified">
-        <a class="nav-link {{post_active}}" (click)="switch_post()">Post</a>
-        <a class="nav-link {{request_active}}" (click)="switch_request()">Request</a>
+﻿<nav class="nav nav-pills nav-justified">
+    <a class="nav-link {{post_active}}" (click)="switch_post()">Share a ride</a>
+    <a class="nav-link {{request_active}}" (click)="switch_request()">Need a ride</a>
 </nav>
 
 <br><br>
 
 <div *ngIf='switch_flag == 1'>
 
-    <app-post-list></app-post-list>
+<app-post-list></app-post-list>
 
+<a [routerLink]="['/newpost']">
+    <button type="button" class="btn btn-primary btn-lg">New Share</button>
+</a>
 </div>
 
 <div *ngIf='switch_flag == 0'>
-    <app-request-list></app-request-list>
-</div>
-
-
-
-<br><br>
-
-<a [routerLink]="['/newpost']">
-    <button type="button" class="btn btn-primary btn-lg">New Post</button>
-</a>
-
-<br><br>
+<app-request-list></app-request-list>
 
 <a [routerLink]="['/newrequest']">
-    <button type="button" class="btn btn-primary btn-lg">New Request</button>
+    <button type="button" class="btn btn-primary btn-lg">New Need</button>
 </a>
+</div>
+
+<br><br>
