@@ -82,7 +82,7 @@
     
     <div class="form-group">
         <label for="destination_state">Destination State</label>
-        <select formControlName="destinationstate" class="form-control" >
+        <select formControlName="destination_state" class="form-control" >
                 <option value="">N/A</option>
                 <option value="AK">Alaska</option>
                 <option value="AL">Alabama</option>
@@ -146,18 +146,18 @@
 
     <div class="form-group">
         <label for="people_number">Number of Passenger</label>
-        <select class="form-control" id="people_number">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+        <select class="form-control" formControlName="people_number" id="people_number">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
         </select>
     </div>
 
     <div class="form-group">
             <label for="remarks">Remarks</label>
-            <textarea class="form-control" placeholder="Example: No smorking" id="remarks" rows="3"></textarea>
+            <textarea formControlName="remarks" class="form-control" placeholder="Example: No smorking" id="remarks" rows="3"></textarea>
     </div>
 
     <div class="form-group">

@@ -24,8 +24,8 @@ import { RequestDetailComponent } from './request-detail/request-detail.componen
 import { NewRequestComponent } from './new-request/new-request.component';
 import { UpdateRequestComponent } from './update-request/update-request.component';
 import { UserPublicProfileComponent } from './user-public-profile/user-public-profile.component';;
-import { PostListInviteComponent } from './post-list-invite/post-list-invite.component'
-
+import { PostListInviteComponent } from './post-list-invite/post-list-invite.component';
+import { NewPostInviteComponent } from './new-post-invite/new-post-invite.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -52,7 +52,8 @@ import { PostListInviteComponent } from './post-list-invite/post-list-invite.com
         NewRequestComponent,
         UpdateRequestComponent,
         UserPublicProfileComponent,
-        PostListInviteComponent        
+        PostListInviteComponent ,
+        NewPostInviteComponent       
     ],
     providers: [
         AuthGuard,

@@ -3,51 +3,67 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService, PostRequestService } from '../_services';
-import { Post } from '../_models';
-import { getLocaleTimeFormat } from '@angular/common';
+import { Post, Request } from '../_models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-new-post',
-  templateUrl: './new-post.component.html',
-  styleUrls: ['./new-post.component.css']
+  selector: 'app-new-post-invite',
+  templateUrl: './new-post-invite.component.html',
+  styleUrls: ['./new-post-invite.component.css']
 })
-export class NewPostComponent implements OnInit {
+export class NewPostInviteComponent implements OnInit {
 
     postForm: FormGroup;
     loading = false;
     submitted = false;
     newPost: Post;
+    requestDetail: Request;
+    requestid: string;
 
-    constructor(
+  constructor(
             private formBuilder: FormBuilder,
             private router: Router,
             private postrequestservice: PostRequestService,
-            private alertService: AlertService
-    ) { }
+            private alertService: AlertService,
+            private route: ActivatedRoute
+  ) { }
 
-    ngOnInit() {
-        this.postForm = this.formBuilder.group({
-            post_orderid: [''],
-            post_userid: [''],
-            departure_location: ['', Validators.required],
-            destination_location: ['', Validators.required],
-            departure_city: ['', Validators.required],
-            departure_state: ['', Validators.required],
-            destination_city: ['', Validators.required],
-            destination_state: ['', Validators.required],
-            departure_time: ['', Validators.required],
-            //2018-11-07 16:34:00
-            post_time: [''],
-            remarks: ['', Validators.required],
-            available_seats: [null, Validators.required],
-            available: [],
-            finished: [],
-            waitlist: [],
-            acceptlist: []
-        });
-    }
+  ngOnInit() {
+    this.requestid = this.route.snapshot.paramMap.get('requestid');
+    this.getRequestDetail();
+    
+  
+  }
 
-    get f() { return this.postForm.controls; }
+  get f() { return this.postForm.controls; }
+
+  getRequestDetail(){
+	    this.postrequestservice.getRequestDetail(this.requestid).pipe(first()).subscribe(request => {
+            this.requestDetail = request;
+            this.postForm = this.formBuilder.group({
+                post_orderid: [''],
+                post_userid: [''],
+                departure_location: [this.requestDetail.departure_location, Validators.required],
+                departure_city: [this.requestDetail.departure_city, Validators.required],
+                departure_state: [this.requestDetail.departure_state, Validators.required],
+        
+                destination_location: [this.requestDetail.destination_location, Validators.required],
+                destination_city: [this.requestDetail.destination_city, Validators.required],
+                destination_state: [this.requestDetail.destination_state, Validators.required],
+                departure_time: [this.requestDetail.departure_time, Validators.required],
+                //2018-11-07 16:34:00
+                post_time: [''],
+                remarks: ['', Validators.required],
+                available_seats: [this.requestDetail.people_number, Validators.required],
+                available: [],
+                finished: [],
+                waitlist: [],
+                acceptlist: []
+            });
+            console.log(this.postForm.value);
+            
+		});
+  }
 
     onSubmit() {
         this.submitted = true;
@@ -67,7 +83,6 @@ export class NewPostComponent implements OnInit {
         // stop here if form is invalid
         if (this.postForm.invalid) {
             console.log(this.postForm.value);
-            
             return;
         }
 
@@ -76,7 +91,7 @@ export class NewPostComponent implements OnInit {
         //this.postForm.value.finishRegister = 1;
 
         this.loading = true;
-        this.postrequestservice.insertPost(this.postForm.value)
+        this.postrequestservice.insertPostfromInvite(this.postForm.value, this.requestid)
             .pipe(first())
             .subscribe(
                 success => {
@@ -107,6 +122,5 @@ export class NewPostComponent implements OnInit {
         let s = postDate.getSeconds();
         return Y+M+D+h+m+s;
     }
-
 
 }

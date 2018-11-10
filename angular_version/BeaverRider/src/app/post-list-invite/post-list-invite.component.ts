@@ -3,7 +3,7 @@ import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Post, Request } from '../_models';
 import { ActivatedRoute } from '@angular/router';
-import { PostRequestService } from '../_services';
+import { AlertService, PostRequestService } from '../_services';
 
 @Component({
   selector: 'app-post-list-invite',
@@ -15,18 +15,29 @@ export class PostListInviteComponent implements OnInit {
   postList: Post[] = [];
   requestid: string;
 
-  constructor(private postrequestService: PostRequestService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private alertService: AlertService, private postrequestService: PostRequestService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.requestid = this.route.snapshot.paramMap.get('requestid');
     this.getPostList();
-    localStorage.setItem('requestid', this.requestid);
+    //localStorage.setItem('requestid', this.requestid);
   }
 
   postClick(post: Post){
-    localStorage.removeItem('requestid');
-    this.postrequestService.inviterequest(post.post_orderid, this.requestid, post.post_userid);
-    window.location.href="http://web.engr.oregonstate.edu/~hezhi/kun_test/beaverrider"
+    //localStorage.removeItem('requestid');
+
+    this.postrequestService.inviterequest(post.post_orderid, this.requestid, post.post_userid)
+			.pipe(first())
+			.subscribe(
+				success => {
+					this.alertService.success('inviterequest successful', true);
+					console.log('inviterequest successful');
+				},
+				error => {
+					this.alertService.error(error);
+					console.log('inviterequest err');
+        });
+    this.router.navigate(['']);
   }
 
   getPostList(){

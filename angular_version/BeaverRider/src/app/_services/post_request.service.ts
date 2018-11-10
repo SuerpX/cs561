@@ -103,10 +103,12 @@ export class PostRequestService {
 
     inviterequest(postid: string, requestid: string, postuserid: string){
         var connect={
-            'userid': postuserid,
+            'userId': postuserid,
             'postOrderId': postid,
             'requestOrderId': requestid
         }
+        console.log(connect);
+        
         return this.http.post(`${environment.apiUrl}/connect_orders.php?view=newRequestWaitList`, connect);
     }
 
@@ -118,5 +120,9 @@ export class PostRequestService {
         }
         return this.http.post(`${environment.apiUrl}/connect_orders.php?view=newPostWaitList`, connect);
     }
+
+    insertPostfromInvite(post: Post, requestid: string){
+		return this.http.post(`${environment.apiUrl}/connect_orders.php?view=newPostAndConnect&requestOrderId=` + requestid, post);
+	}
 
 }

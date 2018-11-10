@@ -8,7 +8,7 @@
             <!--text-truncate-->
             <p class="card-text">From {{request.departure_location}} to {{request.destination_location}} in {{request.departure_time}}, post by {{request.request_userid}}, and it have {{request.people_number}} person with this user.</p>
             <a routerLink="/requestdetail/{{request.request_orderid}}" class="card-link">See Detail</a>
-            <a href="#" class="card-link">Another link</a>
+            <a routerLink="/postlistinvite/{{request.request_orderid}}" class="card-link">Invite</a>
           </div>
         </div>
     </div>

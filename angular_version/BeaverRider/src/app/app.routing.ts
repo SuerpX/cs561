@@ -14,6 +14,7 @@ import { UserCenterComponent } from "./user-center";
 import { RequestDetailComponent } from "./request-detail";
 import { UserPublicProfileComponent } from "./user-public-profile";
 import { PostListInviteComponent } from "./post-list-invite";
+import { NewPostInviteComponent } from "./new-post-invite";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     { path: 'requestdetail/:orderid', component: RequestDetailComponent },
     { path: 'userpubilcprofile/:userid', component: UserPublicProfileComponent },
     { path: 'postlistinvite/:requestid', component: PostListInviteComponent },
+    { path: 'newpostinvite/:requestid', component: NewPostInviteComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
