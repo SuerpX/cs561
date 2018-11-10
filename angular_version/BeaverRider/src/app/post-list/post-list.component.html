@@ -1,14 +1,19 @@
 
 <div class="row" *ngIf='postList != []'>
-  <div *ngFor="let post of postList" class="col" style="height: 18rem;">
-      <div class="card" style="width: 18rem;">
+  <div *ngFor="let post of postList" class="col-md-4" >
+      <div class="card mb-4 box-shadow">
         <div class="card-body">
-          <h5 class="card-title">{{post.departure_location}} to {{post.destination_location}}</h5>
+          <h5 class="card-title">{{post.departure_city}} to {{post.destination_city}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{post.post_time}} created</h6>
-          <!--text-truncate-->
-          <p class="card-text">From {{post.departure_location}} to {{post.destination_location}} in {{post.departure_time}}, post by {{post.post_userid}}, and it still have {{post.available_seats}} seats available.</p>
+        </div> 
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">From: {{post.departure_location}}, {{post.departure_city}}, {{post.departure_state}}</li>
+            <li class="list-group-item">To: {{post.destination_location}}, {{post.destination_city}}, {{post.destination_state}}</li>
+            <li class="list-group-item">Departure time: {{post.departure_time}}</li>
+            <li class="list-group-item">Available seats: {{post.available_seats}}</li>
+        </ul>
+        <div class="card-body">
           <a routerLink="/postdetail/{{post.post_orderid}}" class="card-link">See Detail</a>
-          <a href="#" class="card-link">Another link</a>
         </div>
       </div>
   </div>

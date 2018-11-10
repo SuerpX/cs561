@@ -1,38 +1,53 @@
-<p>
-  request-detail works!
-</p>
-
-
-<div *ngIf='requestDetail'>
-    <p>{{requestDetail.request_orderid}}</p>
-    <p><a routerLink="/userpubilcprofile/{{requestDetail.request_userid}}">{{requestDetail.request_userid}}</a></p>
-    <p>{{requestDetail.departure_location}}</p>
-    <p>{{requestDetail.destination_location}}</p>
-    <p>{{requestDetail.departure_time}}</p>
-    <p>{{requestDetail.post_time}}</p>
-    <p>{{requestDetail.remarks}}</p>
-    <p>{{requestDetail.people_number}}</p>
-    <p>{{requestDetail.available}}</p>
-    <p>{{requestDetail.finished}}</p>
-    <p>{{requestDetail.waitlist}}</p>
-    <p>{{requestDetail.acceptlist}}</p>
-</div>
-
-<br><br>
-
-<button type="button" class="btn btn-primary" routerLink="">Back</button>
-
-
-
-<div *ngIf='requestDetail'>
-<div *ngIf="currentUserId == requestDetail.request_userid">
-<br><br>
-
-<button type="button" class="btn btn-primary" routerLink="/updaterequest/{{requestDetail.request_orderid}}">Update</button>
-
-<br><br>
-
-<button type="button" class="btn btn-primary" (click)="requestDelete()">Delete</button>
-
-</div>
-</div>
+<div *ngIf='requestDetail' class="text-center">
+    <div class="card text-center">
+      <div class="card-header text-muted">
+          <p>Order ID:  {{requestDetail.request_orderid}}</p>
+      </div>
+  
+      <div class="card-body">
+          <div class="col-center-block text-center">
+            <dl class="row text-left">
+              <dt class="col-sm-3">Poster</dt>
+              <dd class="col-sm-9"><p><a routerLink="/userpubilcprofile/{{requestDetail.request_userid}}">{{requestDetail.request_userid}}</a></p></dd>
+  
+              <dt class="col-sm-3">From</dt>
+              <dd class="col-sm-9"> <p>{{requestDetail.departure_location}}, {{requestDetail.departure_city}}, {{requestDetail.departure_state}}</p></dd>
+  
+              <dt class="col-sm-3">To</dt>
+              <dd class="col-sm-9"> <p>{{requestDetail.destination_location}}, {{requestDetail.destination_city}}, {{requestDetail.destination_state}}</p></dd>
+  
+              <dt class="col-sm-3">Departure Time</dt>
+              <dd class="col-sm-9"> <p>{{requestDetail.departure_time}}</p></dd>
+  
+              <dt class="col-sm-3">Number of People</dt>
+              <dd class="col-sm-9"> <p>{{requestDetail.people_number}}</p></dd>
+  
+              <dt class="col-sm-3">Remarks</dt>
+              <dd class="col-sm-9"> <p>{{requestDetail.remarks}}</p></dd>
+  
+              <dt class="col-sm-3">Wait List</dt>
+              <dd class="col-sm-9"> <p>{{requestDetail.waitlist}}</p></dd>
+  
+              <dt class="col-sm-3">Accept List</dt>
+              <dd class="col-sm-9"> <p>{{requestDetail.acceptlist}}</p></dd>
+            </dl>
+          </div> 
+          <div class="button-block">
+            <div *ngIf="currentUserId == requestDetail.request_userid" class="text-center row">
+              <div class="text-center col">
+                <button type="button" class="btn btn-primary" routerLink="/updaterequest/{{requestDetail.request_orderid}}">Update</button>
+              </div>
+              <div class="text-center col">
+                <button type="button" class="btn btn-primary" (click)="requestDelete()">Delete</button>
+              </div>
+            </div> 
+          </div> 
+            <div *ngIf="currentUserId != requestDetail.request_userid" class="text-center">
+              <button type="button" class="btn btn-primary">Join</button>
+            </div>
+    </div>
+  
+      <div class="card-footer text-muted">
+          <p>Post Time: {{requestDetail.post_time}}</p>
+          <button type="button" class="btn btn-primary" routerLink="">Back</button>
+      </div>
