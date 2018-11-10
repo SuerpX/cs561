@@ -43,6 +43,8 @@ export class UpdatePostComponent implements OnInit {
 		//this.postForm.value.post_userid = localStorage.getItem('currentUserId');
 		// stop here if form is invalid
 		if (this.postForm.invalid) {
+			console.log(this.postForm.value);
+			
 			return;
 		}
 
@@ -76,7 +78,13 @@ export class UpdatePostComponent implements OnInit {
 				post_orderid: [this.updatePost.post_orderid],
 				post_userid: [this.updatePost.post_userid],
 				departure_location: [this.updatePost.departure_location, Validators.required],
+				departure_city: [this.updatePost.departure_city, Validators.required],
+				departure_state: [this.updatePost.departure_state, Validators.required],
+				
 				destination_location: [this.updatePost.destination_location, Validators.required],
+				destination_city: [this.updatePost.destination_city, Validators.required],
+                destination_state: [this.updatePost.destination_state, Validators.required],
+				
 				departure_time: [this.updatePost.departure_time, Validators.required],
 				post_time: [this.updatePost.post_time],
 				remarks: [this.updatePost.remarks, Validators.required],

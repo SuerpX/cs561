@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService, PostRequestService } from '../_services';
 import { Post } from '../_models';
-import { getLocaleTimeFormat } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-post',
@@ -22,7 +22,8 @@ export class NewPostComponent implements OnInit {
             private formBuilder: FormBuilder,
             private router: Router,
             private postrequestservice: PostRequestService,
-            private alertService: AlertService
+            private alertService: AlertService,
+            private route: ActivatedRoute
     ) { }
 
     ngOnInit() {
