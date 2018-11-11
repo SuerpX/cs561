@@ -41,7 +41,8 @@ export class PostListInviteComponent implements OnInit {
   }
 
   getPostList(){
-    this.postrequestService.getPostListBycondition().pipe(first()).subscribe(postList => {
+    let currentUserId = localStorage.getItem('currentUserId');
+    this.postrequestService.getPostListByUserId(currentUserId).pipe(first()).subscribe(postList => {
       this.postList = postList;
     });
   }

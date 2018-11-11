@@ -1,0 +1,1 @@
+﻿export * from './waitlist-for-request.component';

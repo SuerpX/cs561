@@ -28,6 +28,9 @@ import { PostListInviteComponent } from './post-list-invite/post-list-invite.com
 import { NewPostInviteComponent } from './new-post-invite/new-post-invite.component';
 import { RequestListInviteComponent } from './request-list-invite/request-list-invite.component';
 import { NewRequestInviteComponent } from './new-request-invite/new-request-invite.component';
+import { WaitlistForPostComponent } from './waitlist-for-post/waitlist-for-post.component';
+import { WaitlistForRequestComponent } from './waitlist-for-request/waitlist-for-request.component';
+import { PassengerRequestComponent } from './passenger-request/passenger-request.component';
 
 @NgModule({
     imports: [
@@ -58,7 +61,10 @@ import { NewRequestInviteComponent } from './new-request-invite/new-request-invi
         PostListInviteComponent ,
         NewPostInviteComponent ,
         RequestListInviteComponent ,
-        NewRequestInviteComponent
+        NewRequestInviteComponent,
+        WaitlistForPostComponent ,
+        WaitlistForRequestComponent ,
+        PassengerRequestComponent  
     ],
     providers: [
         AuthGuard,

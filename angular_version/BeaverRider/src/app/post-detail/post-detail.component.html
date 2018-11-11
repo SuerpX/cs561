@@ -43,3 +43,10 @@
 
 </div>
 </div>
+
+
+<div *ngIf='postDetail'>
+<div *ngIf="currentUserId == postDetail.post_userid">
+  <app-waitlist-for-post></app-waitlist-for-post>
+</div>
+</div>

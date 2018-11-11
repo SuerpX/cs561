@@ -40,3 +40,11 @@
 
 </div>
 </div>
+
+
+
+<div *ngIf='requestDetail'>
+    <div *ngIf="currentUserId == requestDetail.request_userid">
+      <app-waitlist-for-request></app-waitlist-for-request>
+    </div>
+</div>

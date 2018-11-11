@@ -39,7 +39,8 @@ export class RequestListInviteComponent implements OnInit {
   }
 
   getRequestList(){
-    this.postrequestService.getRequestListBycondition().pipe(first()).subscribe(requestList => {
+    let currentUserId = localStorage.getItem('currentUserId');
+    this.postrequestService.getRequestListByUserId(currentUserId).pipe(first()).subscribe(requestList => {
       this.requestList = requestList;
     });
   }
