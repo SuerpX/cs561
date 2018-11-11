@@ -1,5 +1,6 @@
 <h2>Share a ride</h2>
-<div *ngIf="requestDetail">
+<h4>new post from request for inviting</h4>
+<div *ngIf="flag">
 <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group">

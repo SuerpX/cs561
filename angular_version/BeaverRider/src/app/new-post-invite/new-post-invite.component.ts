@@ -19,6 +19,7 @@ export class NewPostInviteComponent implements OnInit {
     newPost: Post;
     requestDetail: Request;
     requestid: string;
+    flag: number;
 
   constructor(
             private formBuilder: FormBuilder,
@@ -60,6 +61,7 @@ export class NewPostInviteComponent implements OnInit {
                 waitlist: [],
                 acceptlist: []
             });
+            this.flag = 1;
             console.log(this.postForm.value);
             
 		});

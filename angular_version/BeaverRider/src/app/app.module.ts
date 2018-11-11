@@ -10,22 +10,25 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertService, AuthenticationService, UserService, PostRequestService } from './_services';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
-import { RegisterComponent } from './register';;
+import { RegisterComponent } from './register';
 import { OsuloginComponent } from './osulogin/osulogin.component';
 import { ProfileComponent } from './profile/profile.component';
-import { PostListComponent } from './post-list/post-list.component';;
+import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { UpdatePostComponent } from './update-post/update-post.component';
-import { UserCenterComponent } from './user-center/user-center.component';;
+import { UserCenterComponent } from './user-center/user-center.component';
 import { DriverActivePostComponent } from './driver-active-post/driver-active-post.component';
 import { RequestListComponent } from './request-list/request-list.component';
-import { RequestDetailComponent } from './request-detail/request-detail.component';;
+import { RequestDetailComponent } from './request-detail/request-detail.component';
 import { NewRequestComponent } from './new-request/new-request.component';
 import { UpdateRequestComponent } from './update-request/update-request.component';
-import { UserPublicProfileComponent } from './user-public-profile/user-public-profile.component';;
+import { UserPublicProfileComponent } from './user-public-profile/user-public-profile.component';
 import { PostListInviteComponent } from './post-list-invite/post-list-invite.component';
-import { NewPostInviteComponent } from './new-post-invite/new-post-invite.component'
+import { NewPostInviteComponent } from './new-post-invite/new-post-invite.component';
+import { RequestListInviteComponent } from './request-list-invite/request-list-invite.component';
+import { NewRequestInviteComponent } from './new-request-invite/new-request-invite.component';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -53,7 +56,9 @@ import { NewPostInviteComponent } from './new-post-invite/new-post-invite.compon
         UpdateRequestComponent,
         UserPublicProfileComponent,
         PostListInviteComponent ,
-        NewPostInviteComponent       
+        NewPostInviteComponent ,
+        RequestListInviteComponent ,
+        NewRequestInviteComponent
     ],
     providers: [
         AuthGuard,

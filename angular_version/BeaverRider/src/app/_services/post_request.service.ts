@@ -114,7 +114,7 @@ export class PostRequestService {
 
     joinpost(postid: string, requestid: string, requestuserid: string){
         var connect={
-            'userid': requestuserid,
+            'userId': requestuserid,
             'postOrderId': postid,
             'requestOrderId': requestid
         }
@@ -123,6 +123,10 @@ export class PostRequestService {
 
     insertPostfromInvite(post: Post, requestid: string){
 		return this.http.post(`${environment.apiUrl}/connect_orders.php?view=newPostAndConnect&requestOrderId=` + requestid, post);
+    }
+    
+    insertRequestfromJoin(request: Request, postid: string){
+		return this.http.post(`${environment.apiUrl}/connect_orders.php?view=newRequestAndConnect&postOrderId=` + postid, request);
 	}
 
 }

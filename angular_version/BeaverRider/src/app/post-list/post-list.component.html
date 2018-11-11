@@ -8,7 +8,7 @@
           <!--text-truncate-->
           <p class="card-text">From {{post.departure_location}} to {{post.destination_location}} in {{post.departure_time}}, post by {{post.post_userid}}, and it still have {{post.available_seats}} seats available.</p>
           <a routerLink="/postdetail/{{post.post_orderid}}" class="card-link">See Detail</a>
-          <a href="#" class="card-link">Another link</a>
+          <a routerLink="/requestlistinvite/{{post.post_orderid}}" class="card-link">Join</a>
         </div>
       </div>
   </div>
