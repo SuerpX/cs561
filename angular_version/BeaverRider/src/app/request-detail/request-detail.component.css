@@ -1,0 +1,12 @@
+.col-center-block {
+    float: none;
+    display: block;
+    margin-left: 30%
+}
+
+.button-block {
+    float: none;
+    display: block;
+    margin-left: 20%;
+    margin-right: 20%
+}

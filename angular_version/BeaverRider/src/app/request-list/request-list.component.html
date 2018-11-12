@@ -1,0 +1,24 @@
+
+  <div class="row" *ngIf='requestList != []'>
+      <div *ngFor="let request of requestList" class="col-md-4" >
+          <div class="card mb-4 box-shadow">
+            <div class="card-body">
+              <h5 class="card-title">{{request.departure_city}} to {{request.destination_city}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{request.post_time}} created</h6>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">From: {{request.departure_location}}, {{request.departure_city}}, {{request.departure_state}}</li>
+                <li class="list-group-item">To: {{request.destination_location}}, {{request.destination_city}}, {{request.destination_state}}</li>
+                <li class="list-group-item">Departure time: {{request.departure_time}}</li>
+                <li class="list-group-item">Number of people: {{request.people_number}}</li>
+            </ul>
+            <div class="card-body">
+              <a routerLink="/requestdetail/{{request.request_orderid}}" class="card-link">See Detail</a>
+              <a *ngIf="request.request_userid != currentUserId" routerLink="/postlistinvite/{{request.request_orderid}}" class="card-link">Invite</a>
+            </div>
+
+          </div>
+      </div>
+    </div>
+    
+  
