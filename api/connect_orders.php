@@ -47,6 +47,16 @@ switch ($_GET['view']) {
     case 'readRequestWaitListForDriver':
         readRequestWaitListForDriver($_GET['postOrderId']);
         break;
+    case 'readConfirmedOrderForPassenger':
+        readConfirmedOrderForPassenger($_GET['userId']);
+        break;
+    case 'readUnconfirmedOrderForPassenger':
+        readUnconfirmedOrderForPassenger($_GET['userId']);
+        break;
+    case 'readConfirmedOrderForRequestOrderId':
+        readConfirmedOrderForRequestOrderId($_GET['requestOrderId']);
+        break;
+
 
 
 }
@@ -80,6 +90,7 @@ function orderConfirmed(){
 
     $connectOrder->deleteWaitList("post_waitlist", $object);
     $connectOrder->deleteWaitList("request_waitlist", $object);
+
 
     echo 'success';
 
@@ -152,32 +163,53 @@ function newRequestAndConnect(){
 function readPostWaitListForDriver($postOrderId){
     $connectOrder = conn();
     $result = $connectOrder->readWaitList("request_orderid","post_waitlist",$postOrderId, "post_orderid" );
-    packResultForRequest($result);
+    $order = connOrder();
+    $availableSeats = $order->getAvailableSeats($postOrderId);
+    packResultForRequest($result,$availableSeats, 1);
 }
 function readRequestWaitListForPassenger($requestOrderId)
 {
     $connectOrder = conn();
     $result = $connectOrder->readWaitList("post_orderid", "request_waitlist", $requestOrderId, "request_orderid");
-    packResultForPost($result);
+    $order = connOrder();
+    $peopleNumber = $order->getPeopleNumber($requestOrderId);
+    packResultForPost($result,$peopleNumber, 1);
 }
 function readPostWaitListForPassenger($requestOrderId){
     $connectOrder = conn();
     $result = $connectOrder->readWaitList("post_orderid", "post_waitlist", $requestOrderId, "request_orderid");
-    packResultForPost($result);
+    $order = connOrder();
+    $peopleNumber = $order->getPeopleNumber($requestOrderId);
+    packResultForPost($result,$peopleNumber, 1);
 }
 function readRequestWaitListForDriver($postOrderId){
     $connectOrder = conn();
     $result = $connectOrder->readWaitList("request_orderid", "request_waitlist", $postOrderId, "post_orderid");
-    packResultForRequest($result);
+    $order = connOrder();
+    $availableSeats = $order->getAvailableSeats($postOrderId);
+    packResultForRequest($result,$availableSeats, 1);
 }
-function packResultForRequest($result){
+function readConfirmedOrderForPassenger($userId){
+    $connectOrder = conn();
+    $result = $connectOrder->readConfirmedList($userId);
+    //print_r($result->rowCount());
+    packResultForRequest($result,100, 1);
+}
+function readUnconfirmedOrderForPassenger($userId){
+    $connectOrder = conn();
+    $result = $connectOrder->readUnconfirmedList($userId);
+    packResultForRequest($result,100, 1);
+}
+function readConfirmedOrderForRequestOrderId($requestOrderId){
+    $connectOrder = conn();
+    $result = $connectOrder->readConfirmedOrderForRequestOrderId($requestOrderId);
+    packResultForPost($result,-1, 0);
+}
+function packResultForRequest($result,$availableSeats, $isList){
     $order = connOrder();
     $num = $result->rowCount();
-    if ($num == 0){
-        echo json_encode(array('message' => 'Nothing'));
-    }
     $result_arr = array();
-    for ($i = 0; $i < $num;$i++) {
+    for ($i = 0; $i < $num; $i++) {
 
         $item = $result->fetch(PDO::FETCH_ASSOC)['request_orderid'];
         //print_r($item);
@@ -201,20 +233,25 @@ function packResultForRequest($result){
                 'destination_city' => $destination_city,
                 'destination_state' => $destination_state
             );
-            array_push($result_arr, $post_item);
+            if ($post_item['people_number'] <= $availableSeats) {
+                array_push($result_arr, $post_item);
+            }
         }
         //print_r($result_arr);
     }
-    echo json_encode($result_arr);
+    if (count($result_arr) == 0){
+        echo "";
+    }
+    else{
+        echo json_encode($result_arr);
+    }
+
 }
-function packResultForPost($result){
+function packResultForPost($result,$peopleNumber,$isList){
     $order = connOrder();
     $num = $result->rowCount();
     $result_arr = array();
-    if ($num == 0){
-        echo json_encode(array('message' => 'Nothing'));
-    }
-    for ($i = 0; $i < $num;$i++) {
+    for ($i = 0; $i < $num; $i++) {
 
         $item = $result->fetch(PDO::FETCH_ASSOC)['post_orderid'];
         //print_r($item);
@@ -238,9 +275,22 @@ function packResultForPost($result){
                 'destination_city' => $destination_city,
                 'destination_state' => $destination_state
             );
-            array_push($result_arr, $post_item);
+            if ($peopleNumber <= $post_item['available_seats']) {
+                array_push($result_arr, $post_item);
+            }
         }
         //print_r($result_arr);
     }
-    echo json_encode($result_arr);
+    if (count($result_arr) == 0){
+        echo "";
+    }
+    else{
+        if ($isList) {
+            echo json_encode($result_arr);
+        }
+        else{
+            echo json_encode($result_arr[0]);
+        }
+    }
+
 }
