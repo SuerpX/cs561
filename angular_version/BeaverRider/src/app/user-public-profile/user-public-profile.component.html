@@ -4,16 +4,30 @@
 
 
 <div *ngIf="user">
-
-  <p>{{user.userId}}</p>
-  <p>{{user.email}}</p>
-  <p>{{user.firstname}}</p>
-  <p>{{user.lastname}}</p>
-  <p>{{user.phoneNumber}}</p>
-  <p>{{user.address}}</p>
-
+    <div class="card text-center">
+        <div class="card-body text-center">
+            <dl class="row text-left">
+                <dt class="col-sm-3">User ID</dt>
+                <dd class="col-sm-9"><p>{{user.userId}}</p></dd>
+    
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9"> <p>{{user.email}}</p></dd>
+    
+                <dt class="col-sm-3">First Name</dt>
+                <dd class="col-sm-9"> <p>{{user.firstname}}</p></dd>
+    
+                <dt class="col-sm-3">Last Name</dt>
+                <dd class="col-sm-9"> <p>{{user.lastname}}</p></dd>
+    
+                <dt class="col-sm-3">Phone Number</dt>
+                <dd class="col-sm-9"> <p>{{user.phoneNumber}}</p></dd>
+    
+                <dt class="col-sm-3">Address</dt>
+                <dd class="col-sm-9"> <p>{{user.address}}</p></dd>
+              </dl>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="button" class="btn btn-primary" routerLink="">Back</button>
+    </div>
 </div>
-
-<br><br>
-
-<button type="button" class="btn btn-primary" routerLink="">Back</button>
