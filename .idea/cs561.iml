@@ -9,5 +9,6 @@
     <orderEntry type="module" module-name="post_order.php" />
     <orderEntry type="module" module-name="post_order.php" />
     <orderEntry type="module" module-name="post_order.php" />
+    <orderEntry type="module" module-name="connect_orders.php" />
   </component>
 </module>

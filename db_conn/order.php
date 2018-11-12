@@ -99,7 +99,6 @@ WHERE post_orderid=?";
 
     public function newPostOrder($info){
         $order_id = time().$info->post_userid;
-        print_r($info);
         try {
             $update = "INSERT INTO postInfo (
 post_orderid, 
@@ -137,7 +136,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $info->destination_state,
             ]);
 
-            return "success";
+            return $order_id;
 
         }catch (PDOException $e){
             return "error".$e;
@@ -242,7 +241,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $info->destination_state,
             ]);
 
-            return "success";
+            return $order_id;
 
         }catch (PDOException $e){
             return "error".$e;
@@ -252,7 +251,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     public function deleteRequestOrder($requestId){
         try {
 
-            $del = "DELETE FROM requestInfo WHERE request_orderid='".$requestId."'";
+            $del = "DELETE FROM requestInfo WHERE request_orderid='".$requestId."'";;
             $stmt = $this->conn->prepare($del);
             $stmt->execute();
             return "success";
@@ -289,6 +288,30 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     }
 
+    public function getAvailableSeats($postOrderId){
+        $query = "SELECT available_seats FROM postInfo WHERE post_orderid='".$postOrderId."'";
+        foreach ($this->conn->query($query) as $r) {
+            $availableSeats = $r['available_seats'];
+        }
+        return $availableSeats;
+    }
+    public function setAvailableSeats($postOrderId, $availableSeats){
+        $update = "UPDATE postInfo SET available_seats=? WHERE post_orderid=?";
+        $stmt = $this->conn->prepare($update);
+        $stmt->execute([$availableSeats, $postOrderId,]);
+    }
+    public function getPeopleNumber($requestOrderId){
+        $query = "SELECT people_number FROM requestInfo WHERE request_orderid='".$requestOrderId."'";
+        foreach ($this->conn->query($query) as $r) {
+            $peopleNumber = $r['people_number'];
+        }
+        return $peopleNumber;
+    }
+    public function setAvailableForRequest($requestOrderId,$value){
+        $update = "UPDATE requestInfo SET available=? WHERE request_orderid=?";
+        $stmt = $this->conn->prepare($update);
+        $stmt->execute([$value, $requestOrderId,]);
+    }
 }
 
 
