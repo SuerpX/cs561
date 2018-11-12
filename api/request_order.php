@@ -141,7 +141,7 @@ function packResult($result, $isList){
 
     }
     else{
-        echo json_encode(array('message' => 'Nothing'));
+        echo "";
 
     }
 }
