@@ -1,5 +1,8 @@
-<div class="row" *ngIf='postList != []'>
-    <div *ngFor="let post of postList" class="col-md-4" >
+<div *ngIf='post'>
+<h4>linked post</h4>
+
+<div class="row" >
+    <div class="col-md-4" >
         <div class="card mb-4 box-shadow">
           <div class="card-body">
             <h5 class="card-title">{{post.departure_city}} to {{post.destination_city}}</h5>
@@ -13,8 +16,9 @@
           </ul>
           <div class="card-body">
             <a routerLink="/postdetail/{{post.post_orderid}}" class="card-link">See Detail</a>
-            <a *ngIf="post.post_userid != currentUserId" routerLink="/requestlistinvite/{{post.post_orderid}}" class="card-link">Join</a>
           </div>
         </div>
     </div>
   </div>
+
+</div>

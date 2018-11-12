@@ -13,11 +13,13 @@ import { PostRequestService } from '../_services';
 export class PostListComponent implements OnInit {
 
   postList: Post[] = [];
+  currentUserId: string;
 
   constructor(private postrequestService: PostRequestService, private router: Router ) { }
 
   ngOnInit() {
     this.getPostList();
+    this.currentUserId = localStorage.getItem('currentUserId');
   }
 
   getPostList(){

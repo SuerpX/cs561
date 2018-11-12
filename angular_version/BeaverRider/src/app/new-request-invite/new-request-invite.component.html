@@ -7,7 +7,7 @@
 <div *ngIf="flag">
     <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
     
-        <div *ngIf="requestForm.departure_location && postDetail.departure_location" class="form-group">
+        <div class="form-group">
             <label for="departure_location">Departure Street</label>
             <input type="text" placeholder="{{postDetail.departure_location}}" formControlName="departure_location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.departure_location.errors }" />
         </div>

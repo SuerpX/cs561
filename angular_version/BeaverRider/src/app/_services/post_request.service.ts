@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { environment } from '../../environments/environment';
 import { User, Post, Request } from '../_models';
 import { Observable } from 'rxjs';
@@ -144,7 +143,11 @@ export class PostRequestService {
     }
 
     getUnconfirmedRequest(userid: string){
-        return this.http.get<Request[]>(`${environment.apiUrl}/request_order.php?view=request_order_all`);
+        return this.http.get<Request[]>(`${environment.apiUrl}/connect_orders.php?view=readUnconfirmedOrderForPassenger&userId=` + userid);
+    }
+
+    getPostForConfirmedRequest(requestid: string){
+        return this.http.get<Post>(`${environment.apiUrl}/connect_orders.php?view=readConfirmedOrderForRequestOrderId&requestOrderId=` + requestid);
     }
 
 }

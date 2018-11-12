@@ -16,17 +16,28 @@
           <a class="nav-link" routerLink="">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/usercenter">Order</a>
+          <a class="nav-link" routerLink="/usercenter">MyOrder</a>
         </li>
         
       </ul>
+
+      <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/newpost">NewPost</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/newrequest">NewRequest</a>
+          </li>
+          
+        </ul>
+      
       <div class="nav-item dropdown">
         <a *ngIf="currentUser" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{currentUser.firstname}}  {{currentUser.lastname}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['/profile']">Edit Profile</a>
-          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" routerLink="">Action</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="userLogout()">Log Out</a>
         </div>

@@ -1,4 +1,30 @@
-<p>
+<div *ngIf='requestDetail' class="card">
+    <h5 class="card-header">Request Detail</h5>
+    <div class="card-body">
+      <h5 class="card-title">From {{requestDetail.departure_city}}, {{requestDetail.departure_state}}</h5>
+      <h5 class="card-title">To {{requestDetail.destination_city}}, {{requestDetail.destination_state}}</h5>
+      <p class="card-text">Detail departure location: {{requestDetail.departure_location}}, {{requestDetail.departure_city}}, {{requestDetail.departure_state}}.</p>
+      <p class="card-text">Detail destination location: {{requestDetail.destination_location}}, {{requestDetail.destination_city}}, {{requestDetail.destination_state}}.</p>
+      <p class="card-text">Departure Time: {{requestDetail.departure_time}}.</p>
+      <p class="card-text">Description: {{requestDetail.remarks}}</p>
+      <p class="card-text">People Number: {{requestDetail.people_number}}</p>
+      <p class="card-text">Created Time: {{requestDetail.post_time}}</p>
+      <p class="card-text">Request Order Id: {{requestDetail.request_orderid}}</p>
+      
+      <div *ngIf='requestDetail'>
+      <div *ngIf="currentUserId == requestDetail.request_userid">
+      <a class="btn btn-primary" routerLink="/updaterequest/{{requestDetail.request_orderid}}">Update</a>
+      <a class="btn btn-primary" (click)="requestDelete()">Delete</a>
+      </div>
+      </div>
+
+      <a class="btn btn-primary" routerLink="">Back</a>
+    </div>
+  </div>
+
+
+<!--
+  <p>
   request-detail works!
 </p>
 
@@ -42,9 +68,17 @@
 </div>
 
 
+-->
 
 <div *ngIf='requestDetail'>
     <div *ngIf="currentUserId == requestDetail.request_userid">
       <app-waitlist-for-request></app-waitlist-for-request>
     </div>
+</div>
+
+
+
+
+<div *ngIf='requestDetail'>
+<app-post-for-confirmed-request></app-post-for-confirmed-request>
 </div>

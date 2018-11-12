@@ -1,9 +1,31 @@
-<p>
-  post-detail works ---------
-</p>
 
+    <div *ngIf='postDetail' class="card">
+        <h5 class="card-header">Post Detail</h5>
+        <div class="card-body">
+          <h5 class="card-title">From {{postDetail.departure_city}}, {{postDetail.departure_state}}</h5>
+          <h5 class="card-title">To {{postDetail.destination_city}}, {{postDetail.destination_state}}</h5>
+          <p class="card-text">Detail departure location: {{postDetail.departure_location}}, {{postDetail.departure_city}}, {{postDetail.departure_state}}.</p>
+          <p class="card-text">Detail destination location: {{postDetail.destination_location}}, {{postDetail.destination_city}}, {{postDetail.destination_state}}.</p>
+          <p class="card-text">Departure Time: {{postDetail.departure_time}}.</p>
+          <p class="card-text">Description: {{postDetail.remarks}}</p>
+          <p class="card-text">Available Seats: {{postDetail.available_seats}}</p>
+          <p class="card-text">Created Time: {{postDetail.post_time}}</p>
+          <p class="card-text">Post Order Id: {{postDetail.post_orderid}}</p>
+          
+          <div *ngIf='postDetail'>
+          <div *ngIf="currentUserId == postDetail.post_userid">
+          <a class="btn btn-primary" routerLink="/updatepost/{{postDetail.post_orderid}}">Update</a>
+          <a class="btn btn-primary" (click)="postDelete()">Delete</a>
+          </div>
+          </div>
 
-<div *ngIf='postDetail'>
+          <a class="btn btn-primary" routerLink="">Back</a>
+        </div>
+      </div>
+  
+
+<!--
+  <div *ngIf='postDetail'>
     <p>{{postDetail.post_orderid}}</p>
     <p><a routerLink="/userpubilcprofile/{{postDetail.post_userid}}">{{postDetail.post_userid}}</a></p>
     <p>{{postDetail.departure_location}}</p>
@@ -43,6 +65,7 @@
 
 </div>
 </div>
+-->
 
 
 <div *ngIf='postDetail'>

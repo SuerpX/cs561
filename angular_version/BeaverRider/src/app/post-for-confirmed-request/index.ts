@@ -1,0 +1,1 @@
+﻿export * from './post-for-confirmed-request.component';
