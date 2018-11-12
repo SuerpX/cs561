@@ -14,11 +14,12 @@ class connectOrder
     }
     public function newConfirmed($info){
         try {
-            $update = "INSERT INTO confirm_list (post_orderid,request_orderid,confirm_time) VALUES (?, ?, ?)";
+            $update = "INSERT INTO confirm_list (post_orderid,request_orderid,userid,confirm_time) VALUES (?, ?, ?)";
             $stmt = $this->conn->prepare($update);
             $stmt->execute([
                 $info->postOrderId,
                 $info->requestOrderId,
+                $info->userId,
                 date('Y-m-d H:i:s'),
             ]);
             return "success";
@@ -89,5 +90,47 @@ VALUES (?, ?, ?)";
         }catch (PDOException $e){
             return "error".$e;
         }
+    }
+
+    public function deleteWaitListWithRequstOrderId($tableName, $requestOrderId){
+        try {
+            $del = "DELETE FROM ".$tableName." WHERE request_orderid=?";
+            $stmt = $this->conn->prepare($del);
+            $stmt->execute([
+                $requestOrderId,
+            ]);
+
+            return "success";
+
+        }catch (PDOException $e){
+            return "error".$e;
+        }
+    }
+
+    public function readConfirmedList($userId){
+        try {
+            $query = "SELECT request_orderid FROM confirm_list WHERE request_orderid IN (SELECT request_orderid FROM requestInfo WHERE request_userid='".$userId."')";
+            $result = $this->conn->query($query);
+            return $result;
+
+        }catch (PDOException $e){
+            return "error".$e;
+        }
+    }
+    public function readUnconfirmedList($userId){
+        try {
+            $query = "SELECT request_orderid FROM requestInfo WHERE request_orderid NOT IN (SELECT request_orderid FROM confirm_list) AND request_userid='".$userId."' AND finished=0";
+            //print_r($query);
+            $result = $this->conn->query($query);
+            return $result;
+
+        }catch (PDOException $e){
+            return "error".$e;
+        }
+    }
+    public function readConfirmedOrderForRequestOrderId($requestOrderId){
+        $query = "SELECT post_orderid FROM confirm_list WHERE request_orderid='".$requestOrderId."' limit 1";
+        $result = $this->conn->query($query);
+        return $result;
     }
 }
