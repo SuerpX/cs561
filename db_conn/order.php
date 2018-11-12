@@ -302,7 +302,6 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
     public function getPeopleNumber($requestOrderId){
         $query = "SELECT people_number FROM requestInfo WHERE request_orderid='".$requestOrderId."'";
-        print_r($query);
         foreach ($this->conn->query($query) as $r) {
             $peopleNumber = $r['people_number'];
         }
