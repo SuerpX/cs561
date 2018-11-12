@@ -1,26 +1,50 @@
-<div *ngIf='requestDetail' class="card">
-    <h5 class="card-header">Request Detail</h5>
-    <div class="card-body">
-      <h5 class="card-title">From {{requestDetail.departure_city}}, {{requestDetail.departure_state}}</h5>
-      <h5 class="card-title">To {{requestDetail.destination_city}}, {{requestDetail.destination_state}}</h5>
-      <p class="card-text">Detail departure location: {{requestDetail.departure_location}}, {{requestDetail.departure_city}}, {{requestDetail.departure_state}}.</p>
-      <p class="card-text">Detail destination location: {{requestDetail.destination_location}}, {{requestDetail.destination_city}}, {{requestDetail.destination_state}}.</p>
-      <p class="card-text">Departure Time: {{requestDetail.departure_time}}.</p>
-      <p class="card-text">Description: {{requestDetail.remarks}}</p>
-      <p class="card-text">People Number: {{requestDetail.people_number}}</p>
-      <p class="card-text">Created Time: {{requestDetail.post_time}}</p>
-      <p class="card-text">Request Order Id: {{requestDetail.request_orderid}}</p>
-      
-      <div *ngIf='requestDetail'>
-      <div *ngIf="currentUserId == requestDetail.request_userid">
-      <a class="btn btn-primary" routerLink="/updaterequest/{{requestDetail.request_orderid}}">Update</a>
-      <a class="btn btn-primary" (click)="requestDelete()">Delete</a>
-      </div>
-      </div>
-
-      <a class="btn btn-primary" routerLink="">Back</a>
+<div *ngIf='requestDetail' class="text-center">
+  <div class="card text-center">
+    <div class="card-header text-muted">
+        <p>Order ID:  {{requestDetail.request_orderid}}</p>
     </div>
+
+    <div class="card-body">
+        <div class="col-center-block text-center">
+          <dl class="row text-left">
+            <dt class="col-sm-3">Poster</dt>
+            <dd class="col-sm-9"><p><a routerLink="/userpubilcprofile/{{requestDetail.request_userid}}">{{requestDetail.request_userid}}</a></p></dd>
+
+            <dt class="col-sm-3">From</dt>
+            <dd class="col-sm-9"> <p>{{requestDetail.departure_location}}, {{requestDetail.departure_city}}, {{requestDetail.departure_state}}</p></dd>
+
+            <dt class="col-sm-3">To</dt>
+            <dd class="col-sm-9"> <p>{{requestDetail.destination_location}}, {{requestDetail.destination_city}}, {{requestDetail.destination_state}}</p></dd>
+
+            <dt class="col-sm-3">Departure Time</dt>
+            <dd class="col-sm-9"> <p>{{requestDetail.departure_time}}</p></dd>
+
+            <dt class="col-sm-3">Number of People</dt>
+            <dd class="col-sm-9"> <p>{{requestDetail.people_number}}</p></dd>
+
+            <dt class="col-sm-3">Remarks</dt>
+            <dd class="col-sm-9"> <p>{{requestDetail.remarks}}</p></dd>
+          </dl>
+        </div> 
+        <div class="button-block">
+          <div *ngIf="currentUserId == requestDetail.request_userid" class="text-center row">
+            <div class="text-center col">
+              <button type="button" class="btn btn-primary" routerLink="/updaterequest/{{requestDetail.request_orderid}}">Update</button>
+            </div>
+            <div class="text-center col">
+              <button type="button" class="btn btn-primary" (click)="requestDelete()">Delete</button>
+            </div>
+          </div> 
+        </div> 
+          <div *ngIf="currentUserId != requestDetail.request_userid" class="text-center">
+            <button type="button" class="btn btn-primary">Join</button>
+          </div>
   </div>
+
+    <div class="card-footer text-muted">
+        <p>Post Time: {{requestDetail.post_time}}</p>
+        <button type="button" class="btn btn-primary" routerLink="">Back</button>
+    </div>
 
 
 <!--
