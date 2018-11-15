@@ -26,6 +26,10 @@ export class WaitlistForRequestComponent implements OnInit {
 
   getRequestFromInvite(){
     this.postrequestService.getRequestListfromInvite(this.requestid).pipe(first()).subscribe(postList => {
+      console.log("getRequestListfromInvite");
+      
+      console.log(this.requestid);
+      
       console.log(postList);
       this.requestfrominvite = postList;
     });

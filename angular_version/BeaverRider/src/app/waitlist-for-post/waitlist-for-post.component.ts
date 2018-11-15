@@ -19,7 +19,7 @@ export class WaitlistForPostComponent implements OnInit {
   constructor(private alertService: AlertService, private postrequestService: PostRequestService, private router: Router, private route: ActivatedRoute  ) { }
 
   ngOnInit() {
-     this.postid = this.route.snapshot.paramMap.get('postid');
+     this.postid = this.route.snapshot.paramMap.get('orderid');
      this.getInvitePostList();
      this.getJoinPostList();
   }
@@ -27,12 +27,20 @@ export class WaitlistForPostComponent implements OnInit {
   getInvitePostList(){
     this.postrequestService.getInviteRequestWaitlist(this.postid).pipe(first()).subscribe(requestList => {
       this.inviterequestwaitlist = requestList;
+      console.log("inviterequestwaitlist");
+      console.log(this.inviterequestwaitlist);
+      
+      
     });
   }
 
   getJoinPostList(){
     this.postrequestService.getJoinPostWaitlist(this.postid).pipe(first()).subscribe(requestList => {
       this.joinpostwaitlist = requestList;
+      console.log("joinpostwaitlist");
+      console.log(this.joinpostwaitlist);
+      
+      
     });
   }
 

@@ -46,7 +46,7 @@
 
 <h4>join post waitlist</h4>
 
-<div class="row" *ngIf='joinpostwaitlist != []'>
+<div class="row" *ngIf='joinpostwaitlist'>
     <div *ngFor="let post of joinpostwaitlist" class="col-md-4" >
         <div class="card mb-4 box-shadow">
           <div class="card-body">
@@ -70,7 +70,7 @@
 
 <h4>invite request waitlist</h4>
 
-<div class="row" *ngIf='inviterequestwaitlist != []'>
+<div class="row" *ngIf='inviterequestwaitlist'>
     <div *ngFor="let post of inviterequestwaitlist" class="col-md-4" >
         <div class="card mb-4 box-shadow">
           <div class="card-body">

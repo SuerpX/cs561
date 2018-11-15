@@ -32,10 +32,10 @@ const appRoutes: Routes = [
     { path: 'usercenter', component: UserCenterComponent },
     { path: 'requestdetail/:orderid', component: RequestDetailComponent },
     { path: 'userpubilcprofile/:userid', component: UserPublicProfileComponent },
-    { path: 'postlistinvite/:requestid', component: PostListInviteComponent },
-    { path: 'newpostinvite/:requestid', component: NewPostInviteComponent },
-    { path: 'requestlistinvite/:postid', component: RequestListInviteComponent },
-    { path: 'newrequestinvite/:postid', component: NewRequestInviteComponent },
+    { path: 'postlistinvite/:orderid', component: PostListInviteComponent },
+    { path: 'newpostinvite/:orderid', component: NewPostInviteComponent },
+    { path: 'requestlistinvite/:orderid', component: RequestListInviteComponent },
+    { path: 'newrequestinvite/:orderid', component: NewRequestInviteComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

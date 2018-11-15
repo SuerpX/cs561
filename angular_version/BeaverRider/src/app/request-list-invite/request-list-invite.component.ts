@@ -17,7 +17,7 @@ export class RequestListInviteComponent implements OnInit {
   constructor(private alertService: AlertService, private postrequestService: PostRequestService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.postid = this.route.snapshot.paramMap.get('postid');
+    this.postid = this.route.snapshot.paramMap.get('orderid');
     this.getRequestList();
   }
 

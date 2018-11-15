@@ -122,19 +122,20 @@ export class PostRequestService {
     }
     
     getInviteRequestWaitlist(postid: string){
-        return this.http.get<Request[]>(`${environment.apiUrl}/connect_orders.php?view=readPostWaitListForDriver&postOrderId=` + postid);
-    }
-
-    getJoinPostWaitlist(postid: string){
         return this.http.get<Request[]>(`${environment.apiUrl}/connect_orders.php?view=readRequestWaitListForDriver&postOrderId=` + postid);
     }
 
+    getJoinPostWaitlist(postid: string){
+        return this.http.get<Request[]>(`${environment.apiUrl}/connect_orders.php?view=readPostWaitListForDriver&postOrderId=` + postid);
+    }
+
     getRequestListfromInvite(requestid: string){
-        return this.http.get<Post[]>(`${environment.apiUrl}/connect_orders.php?view=readPostWaitListForPassenger&requestOrderId=` + requestid);
+        return this.http.get<Post[]>(`${environment.apiUrl}/connect_orders.php?view=readRequestWaitListForPassenger&requestOrderId=` + requestid);
     }
 
     getRequestListfromJoin(requestid: string){
-        return this.http.get<Post[]>(`${environment.apiUrl}/connect_orders.php?view=readRequestWaitListForPassenger&requestOrderId=` + requestid);
+        return this.http.get<Post[]>(`${environment.apiUrl}/connect_orders.php?view=readPostWaitListForPassenger&requestOrderId=` + requestid);
+
     }
 
     getConfirmedRequest(userid: string){
