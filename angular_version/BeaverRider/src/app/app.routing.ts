@@ -37,7 +37,6 @@ const appRoutes: Routes = [
     { path: 'requestlistinvite/:orderid', component: RequestListInviteComponent },
     { path: 'newrequestinvite/:orderid', component: NewRequestInviteComponent },
 
-    // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
 

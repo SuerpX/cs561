@@ -30,7 +30,7 @@ export class NewPostInviteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.requestid = this.route.snapshot.paramMap.get('requestid');
+    this.requestid = this.route.snapshot.paramMap.get('orderid');
     this.getRequestDetail();
     
   
