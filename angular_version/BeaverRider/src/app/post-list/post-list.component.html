@@ -13,7 +13,7 @@
           </ul>
           <div class="card-body">
             <a routerLink="/postdetail/{{post.post_orderid}}" class="card-link">See Detail</a>
-            <a *ngIf="post.post_userid != currentUserId" routerLink="/requestlistinvite/{{post.post_orderid}}" class="card-link">Join</a>
+            <a *ngIf="post.post_userid != currentUserId && post.available_seats != 0" routerLink="/requestlistinvite/{{post.post_orderid}}" class="card-link">Join</a>
           </div>
         </div>
     </div>
