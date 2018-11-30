@@ -44,6 +44,30 @@
 <h2>waitlist-for-post</h2>
 
 
+<h4>confirmed request</h4>
+
+<div class="row" *ngIf='confirmedRequestList'>
+  <div *ngFor="let request of confirmedRequestList" class="col-md-4" >
+      <div class="card mb-4 box-shadow">
+        <div class="card-body">
+          <h5 class="card-title">{{request.departure_city}} to {{request.destination_city}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{request.post_time}} created</h6>
+        </div> 
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">From: {{request.departure_location}}, {{request.departure_city}}, {{request.departure_state}}</li>
+            <li class="list-group-item">To: {{request.destination_location}}, {{request.destination_city}}, {{request.destination_state}}</li>
+            <li class="list-group-item">Departure time: {{request.departure_time}}</li>
+            <li class="list-group-item">people_number: {{request.people_number}}</li>
+        </ul>
+        <div class="card-body">
+          <a routerLink="/requestdetail/{{request.request_orderid}}" class="card-link">See Detail</a>
+          
+        </div>
+      </div>
+  </div>
+</div>
+
+
 <h4>join post waitlist</h4>
 
 <div class="row" *ngIf='joinpostwaitlist'>

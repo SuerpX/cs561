@@ -39,7 +39,7 @@ export class NewRequestComponent implements OnInit {
         //11/5/2018, 5:00:10 PM
         //2018-11-07 16:34:00
         post_time: [''],
-        remarks: ['', Validators.required],
+        remarks: [''],
         people_number: [null, Validators.required],
         available: [],
         finished: [],

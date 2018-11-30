@@ -52,7 +52,7 @@ export class NewRequestInviteComponent implements OnInit {
               departure_time: [this.postDetail.departure_time, Validators.required],
               //2018-11-07 16:34:00
               post_time: [''],
-              remarks: ['', Validators.required],
+              remarks: [''],
               people_number: ['', Validators.required],
               available: [],
               finished: [],

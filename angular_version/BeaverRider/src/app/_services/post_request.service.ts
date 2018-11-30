@@ -143,6 +143,11 @@ export class PostRequestService {
         return this.http.get<Request[]>(`${environment.apiUrl}/connect_orders.php?view=readConfirmedOrderForPassenger&userId=` + userid);
     }
 
+    getConfirmedRequestListByPostId(postid: string){
+        //connect_orders.php?view=readConfirmedOrderForPostOrderId&postOrderId=1543561111chenk5
+        return this.http.get<Request[]>(`${environment.apiUrl}/connect_orders.php?view=readConfirmedOrderForPostOrderId&postOrderId=` + postid);
+    }
+
     getUnconfirmedRequest(userid: string){
         return this.http.get<Request[]>(`${environment.apiUrl}/connect_orders.php?view=readUnconfirmedOrderForPassenger&userId=` + userid);
     }

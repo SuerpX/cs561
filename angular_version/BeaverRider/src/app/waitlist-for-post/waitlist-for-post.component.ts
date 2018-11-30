@@ -14,6 +14,7 @@ export class WaitlistForPostComponent implements OnInit {
 
   inviterequestwaitlist: Request[] = [];
   joinpostwaitlist: Request[] = [];
+  confirmedRequestList: Request[] = [];
   postid: string;
 
   constructor(private alertService: AlertService, private postrequestService: PostRequestService, private router: Router, private route: ActivatedRoute  ) { }
@@ -22,6 +23,7 @@ export class WaitlistForPostComponent implements OnInit {
      this.postid = this.route.snapshot.paramMap.get('orderid');
      this.getInvitePostList();
      this.getJoinPostList();
+     this.getConfirmedRequest();
   }
 
   getInvitePostList(){
@@ -30,6 +32,14 @@ export class WaitlistForPostComponent implements OnInit {
       console.log("inviterequestwaitlist");
       console.log(this.inviterequestwaitlist);
       
+    });
+  }
+
+  getConfirmedRequest(){
+    this.postrequestService.getConfirmedRequestListByPostId(this.postid).pipe(first()).subscribe(requestList => {
+      this.confirmedRequestList = requestList;
+      console.log("confirmedRequestList");
+      console.log(this.inviterequestwaitlist);
       
     });
   }
