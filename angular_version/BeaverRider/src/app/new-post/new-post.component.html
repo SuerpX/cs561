@@ -3,7 +3,13 @@
 
     <div class="form-group">
         <label for="departure_location">Departure Street</label>
-        <input type="text" placeholder="e.g. 123NW 12ST" formControlName="departure_location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.departure_location.errors }" />
+        <input type="text" placeholder="e.g. 123 NW 12ST" formControlName="departure_location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.departure_location.errors }" />
+        <!--
+            <input pattern="\s[A-z]+" type="text" placeholder="e.g. 123 NW 12ST" formControlName="departure_location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.departure_location.errors }" />
+        -->
+    </div>
+    <div *ngIf="submitted && f.departure_location.errors">
+            Departure Street is err. 1
     </div>
 
     <div class="form-group">
@@ -82,7 +88,7 @@
     
     <div class="form-group">
         <label for="destination_state">Destination State</label>
-        <select formControlName="destination_state" class="form-control" >
+        <select formControlName="destination_state" class="form-control">
                 <option value="">N/A</option>
                 <option value="AK">Alaska</option>
                 <option value="AL">Alabama</option>

@@ -30,6 +30,7 @@ export class NewPostComponent implements OnInit {
         this.postForm = this.formBuilder.group({
             post_orderid: [''],
             post_userid: [''],
+            //departure_location: ['', Validators.pattern('\s[A-z]+')],
             departure_location: ['', Validators.required],
             destination_location: ['', Validators.required],
             departure_city: ['', Validators.required],
@@ -39,7 +40,7 @@ export class NewPostComponent implements OnInit {
             departure_time: ['', Validators.required],
             //2018-11-07 16:34:00
             post_time: [''],
-            remarks: ['', Validators.required],
+            remarks: [''],
             available_seats: [null, Validators.required],
             available: [],
             finished: [],

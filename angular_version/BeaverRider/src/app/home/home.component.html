@@ -8,6 +8,21 @@
 
 <div *ngIf='switch_flag == 1'>
 
+        <app-post-list></app-post-list>
+        
+    
+</div>
+    
+<div *ngIf='switch_flag == 0'>
+    
+        <app-request-list></app-request-list>
+        
+</div>
+
+<!--
+
+<div *ngIf='switch_flag == 1'>
+
     <app-post-list></app-post-list>
     <a [routerLink]="['/newpost']">
         <button type="button" class="btn btn-primary btn-lg">New Share</button>
@@ -21,6 +36,9 @@
         <button type="button" class="btn btn-primary btn-lg">New Need</button>
     </a>
 </div>
+
+-->
+
 
 <!--
 
