@@ -15,42 +15,19 @@ export class HomeComponent implements OnInit {
     post_active: string = 'active';
     request_active: string = '';
 
-    matchForm: FormGroup;
-    loading = false;
-    submitted = false;
 
     constructor(
-        private userService: UserService,
-        private router: Router,
-        private formBuilder: FormBuilder,
-        private postrequestservice: PostRequestService
+            private userService: UserService,
+            private router: Router,
+            private formBuilder: FormBuilder,
+            private postrequestservice: PostRequestService,
+            private alertService: AlertService
         ) {
         //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
-        this.matchForm = this.formBuilder.group({
-            post_orderid: [''],
-            post_userid: [''],
-            //departure_location: ['', Validators.pattern('\s[A-z]+')],
-            departure_location: ['', Validators.required],
-            destination_location: ['', Validators.required],
-            departure_city: ['', Validators.required],
-            departure_state: ['', Validators.required],
-            destination_city: ['', Validators.required],
-            destination_state: ['', Validators.required],
-            departure_time: ['', Validators.required],
-            //2018-11-07 16:34:00
-            post_time: [''],
-            remarks: [''],
-            available_seats: [null, Validators.required],
-            available: [],
-            finished: [],
-            waitlist: [],
-            acceptlist: []
-        });
     }
-
 
     switch_request(): void{
         this.switch_flag = 0;
@@ -63,6 +40,5 @@ export class HomeComponent implements OnInit {
         this.post_active = 'active';
         this.request_active = '';
     }
-
 
 }

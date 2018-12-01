@@ -37,11 +37,8 @@
               </div>
             </div> 
           </div> 
-            <div *ngIf="currentUserId != postDetail.post_userid" class="text-center">
-              <button type="button" class="btn btn-primary">
-                <a *ngIf="post.post_userid != currentUserId && post.available_seats != 0" routerLink="/requestlistinvite/{{post.post_orderid}}" >Join</a>
-              </button>
-            </div>
+            <div *ngIf="currentUserId != postDetail.post_userid && postDetail.available_seats != 0" class="text-center">
+              <a routerLink="/requestlistinvite/{{postDetail.post_orderid}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Join</a>
     </div>
   
       <div class="card-footer text-muted">

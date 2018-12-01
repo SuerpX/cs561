@@ -13,13 +13,20 @@ export class PostRequestService {
         return this.http.get<Post[]>(`${environment.apiUrl}/post_order.php?view=post_order_all`);
     }
 
-    getPostListBycondition(startTime: string, endTime: string, departure: string, destination: string){
-        //post_order.php?view=match&startTime=2018-11-07 16:30:11&endTime=2018-11-07 16:35:11&departure=corvallis&destination=portland
-        return this.http.get<Post[]>(`${environment.apiUrl}/post_order.php?view=post_order_all`);
+    getPostListBycondition(departure_state: string, destination_state: string, departure_city: string, destination_city: string){
+        //request_order.php?view=match&startState=OR&endState=OR&departure=corvallis&destination=portland
+        //http://web.engr.oregonstate.edu/~hezhi/api/post_order.php?view=match&startState=OR&endState=OR&departure=corvallis&destination=portland
+        return this.http.get<Post[]>(`${environment.apiUrl}/post_order.php?view=match&startState=`+departure_state+'&endState='+destination_state+'&departure='+departure_city+'&destination='+destination_city);
+        //return this.http.get<Post[]>(`${environment.apiUrl}/post_order.php?view=post_order_all`);
+        //console.log();
+        
     }
 
-    getRequestListBycondition(startTime: string, endTime: string, departure: string, destination: string){
-        return this.http.get<Request[]>(`${environment.apiUrl}/request_order.php?view=request_order_all`);
+    getRequestListBycondition(departure_state: string, destination_state: string, departure_city: string, destination_city: string){
+        //request_order.php?view=match&startState=OR&endState=OR&departure=corvallis&destination=portland
+        //return this.http.get<Request[]>(`${environment.apiUrl}/request_order.php?view=request_order_all`);
+        return this.http.get<Request[]>(`${environment.apiUrl}/request_order.php?view=match&startState=`+departure_state+'&endState='+destination_state+'&departure='+departure_city+'&destination='+destination_city);
+
     }
 
     getPostListByUserId(orderid: string){
