@@ -23,7 +23,7 @@ export class PostListComponent implements OnInit {
   }
 
   getPostList(){
-    this.postrequestService.getPostListBycondition().pipe(first()).subscribe(postList => {
+    this.postrequestService.getPostList().pipe(first()).subscribe(postList => {
       this.postList = postList;
     });
   }

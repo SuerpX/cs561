@@ -13,11 +13,12 @@ export class PostRequestService {
         return this.http.get<Post[]>(`${environment.apiUrl}/post_order.php?view=post_order_all`);
     }
 
-    getPostListBycondition(){
+    getPostListBycondition(startTime: string, endTime: string, departure: string, destination: string){
+        //post_order.php?view=match&startTime=2018-11-07 16:30:11&endTime=2018-11-07 16:35:11&departure=corvallis&destination=portland
         return this.http.get<Post[]>(`${environment.apiUrl}/post_order.php?view=post_order_all`);
     }
 
-    getRequestListBycondition(){
+    getRequestListBycondition(startTime: string, endTime: string, departure: string, destination: string){
         return this.http.get<Request[]>(`${environment.apiUrl}/request_order.php?view=request_order_all`);
     }
 
