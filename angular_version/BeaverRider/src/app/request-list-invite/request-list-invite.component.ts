@@ -11,14 +11,17 @@ import { AlertService, PostRequestService } from '../_services';
 })
 export class RequestListInviteComponent implements OnInit {
 
+  requestList_: Request[] = [];
   requestList: Request[] = [];
   postid: string;
+  requestWaitlist: Request[] = [];
 
   constructor(private alertService: AlertService, private postrequestService: PostRequestService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.postid = this.route.snapshot.paramMap.get('orderid');
     this.getRequestList();
+    
   }
 
   requestClick(request: Request){
@@ -41,8 +44,41 @@ export class RequestListInviteComponent implements OnInit {
   getRequestList(){
     let currentUserId = localStorage.getItem('currentUserId');
     this.postrequestService.getRequestListByUserId(currentUserId).pipe(first()).subscribe(requestList => {
-      this.requestList = requestList;
+      this.requestList_ = requestList;
+      this.getRequestWaitlist();
     });
   }
+
+  getRequestWaitlist(){
+    //let currentUserId = localStorage.getItem('currentUserId');
+    this.postrequestService.getInviteRequestWaitlist(this.postid).pipe(first()).subscribe(requestList => {
+      this.requestWaitlist = requestList;
+
+      if (this.requestWaitlist != null){
+        this.removeOverlap(this.requestList_, this.requestWaitlist)
+      }
+      else{
+        this.requestList = this.requestList_
+      }
+
+    });
+  }
+
+  removeOverlap(l1, l2) {
+    for(var i = 0; i < l1.length; i++){
+        var flag = 0;
+        for(var j = 0; j < l2.length; j++){
+            if(l1[i].request_orderid == l2[j].request_orderid){
+                flag = 1;
+                break;
+            }
+
+        }
+        if (flag == 0){
+            this.requestList.push(l1[i])
+        }
+
+    }
+}
 
 }

@@ -88,7 +88,7 @@ export class UpdateRequestComponent implements OnInit {
 
 
 				request_time: [this.updateRequest.post_time],
-				remarks: [this.updateRequest.remarks, Validators.required],
+				remarks: [this.updateRequest.remarks],
 				people_number: [this.updateRequest.people_number, Validators.required],
 				available: [this.updateRequest.available],
 				finished: [this.updateRequest.finished],

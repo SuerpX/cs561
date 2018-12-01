@@ -12,8 +12,10 @@ import { AlertService, PostRequestService } from '../_services';
 })
 export class PostListInviteComponent implements OnInit {
 
+  postList_: Post[] = [];
   postList: Post[] = [];
   requestid: string;
+  PostWaitlist: Post[] = [];
 
   constructor(private alertService: AlertService, private postrequestService: PostRequestService, private router: Router, private route: ActivatedRoute) { }
 
@@ -43,8 +45,62 @@ export class PostListInviteComponent implements OnInit {
   getPostList(){
     let currentUserId = localStorage.getItem('currentUserId');
     this.postrequestService.getPostListByUserId(currentUserId).pipe(first()).subscribe(postList => {
-      this.postList = postList;
+      this.postList_ = postList;
+      this.getPostWaitlist();
     });
   }
+
+  getPostWaitlist(){
+    //let currentUserId = localStorage.getItem('currentUserId');
+    this.postrequestService.getRequestListfromJoin(this.requestid).pipe(first()).subscribe(requestList => {
+      this.PostWaitlist = requestList;
+
+      if (this.PostWaitlist != null){
+        this.removeOverlap(this.postList_, this.PostWaitlist)
+      }
+      else{
+        this.postList = this.postList_
+        console.log("this.postList = this.postList_");
+        
+      }
+
+    });
+  }
+
+  removeOverlap(l1, l2) {
+    console.log(l1);
+    console.log(l2);
+
+    for(var i = 0; i < l1.length; i++){
+        var flag = 0;
+        for(var j = 0; j < l2.length; j++){
+          console.log(l1[i].post_orderid);
+          console.log(l2[j].post_orderid);
+          
+          
+            if(l1[i].post_orderid == l2[j].post_orderid){
+                flag = 1;
+                break;
+            }
+
+        }
+        console.log(i);
+        console.log(flag);
+        
+        
+        if (flag == 0){
+            this.postList.push(l1[i])
+            console.log("push");
+            
+            console.log(this.postList);
+            
+        }
+
+    }
+    console.log("this.postList");
+    
+    console.log(this.postList);
+    
+}
 
 }

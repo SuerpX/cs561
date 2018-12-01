@@ -87,7 +87,7 @@ export class UpdatePostComponent implements OnInit {
 				
 				departure_time: [this.updatePost.departure_time, Validators.required],
 				post_time: [this.updatePost.post_time],
-				remarks: [this.updatePost.remarks, Validators.required],
+				remarks: [this.updatePost.remarks],
 				available_seats: [this.updatePost.available_seats, Validators.required],
 				available: [this.updatePost.available],
 				finished: [this.updatePost.finished],
