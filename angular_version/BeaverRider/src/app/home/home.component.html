@@ -1,4 +1,5 @@
-﻿<div class="input-group mb-3" >
+
+<div class="input-group mb-3" >
         <div class="input-group-prepend">
           <span class="input-group-text">choose start day time</span>
         </div>
@@ -189,11 +190,16 @@
 
 
 
-<nav class="nav nav-pills nav-justified">
-        <a class="nav-link {{post_active}}" (click)="switch_post()">Share a ride</a>
-        <a class="nav-link {{request_active}}" (click)="switch_request()">Take a ride</a>
-</nav>
 
+
+<p>Choose share a ride to view Driver's order, take a ride to view passenger's order</p>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link {{post_active}}" (click)="switch_post()">Share a ride</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{request_active}}" (click)="switch_request()">Take a ride</a>
+  </ul>
 <br><br>
 
 <div *ngIf='switch_flag == 1'>
