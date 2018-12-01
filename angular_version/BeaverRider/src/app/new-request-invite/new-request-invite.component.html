@@ -1,9 +1,5 @@
-<p>
-  new-request-invite works!
-</p>
-
-<h4>new request from post for joining</h4>
-
+<h2>Take a ride</h2>
+<p>The prefilled cotent is <strong>same</strong> as the order you want to <strong>join</strong></p>
 <div *ngIf="flag">
     <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
     
@@ -149,7 +145,7 @@
             <label for="departure_time">Departure Time</label>
             <input type="text" formControlName="departure_time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.departure_time.errors }" />
         </div>
-        <p>2018-11-07 16:34:00</p>
+        <p>Please use format like: <strong>2018-11-07 16:34:00</strong></p>
     
         <div class="form-group">
             <label for="people_number">people_number</label>

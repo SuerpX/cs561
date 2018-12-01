@@ -1,5 +1,5 @@
 <h2>Share a ride</h2>
-<h4>new post from request for inviting</h4>
+<p>The prefilled cotent is <strong>same</strong> as the order you want to <strong>invite</strong></p>
 <div *ngIf="flag">
 <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
 
@@ -145,7 +145,7 @@
         <label for="departure_time">Departure Time</label>
         <input type="text" formControlName="departure_time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.departure_time.errors }" />
     </div>
-    <p>2018-11-07 16:34:00</p>
+    <p>Please use format like: <strong>2018-11-07 16:34:00</strong></p>
 
     <div class="form-group">
         <label for="available_seats">Available Seats</label>

@@ -1,3 +1,26 @@
+<p>Choose <strong>As a driver</strong> to view all your driver's order, <strong>As a passenger</strong> to view all your passenger's order</p>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link {{driver_active}}" (click)="switch_driver()">As a driver</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{passenger_active}}" (click)="switch_passenger()">As a passenger</a>
+  </ul>
+<br><br>
+<div *ngIf='switch_flag == 1'>
+
+    <app-driver-active-post></app-driver-active-post>
+    
+
+</div>
+
+<div *ngIf='switch_flag == 0'>
+
+    <app-passenger-request></app-passenger-request>
+    
+</div>
+
+<!--
 <h1>Driver</h1>
 
 <app-driver-active-post></app-driver-active-post>
@@ -5,3 +28,4 @@
 <h1>passenger</h1>
 
 <app-passenger-request></app-passenger-request>
+-->

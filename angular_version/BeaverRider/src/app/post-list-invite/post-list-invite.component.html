@@ -17,9 +17,7 @@
     </div>
 </div>
 -->
-
-
-
+<p><strong>Select</strong> your <strong>exist</strong> driver order</p>
 <div class="row" *ngIf='postList != []'>
     <div *ngFor="let post of postList" class="col-md-4" >
         <div class="card mb-4 box-shadow">
@@ -40,10 +38,9 @@
         </div>
     </div>
   </div>
-
-
+  <p><strong>Or</strong> build a <strong>new</strong> driver order</p>
 <a routerLink="/newpostinvite/{{requestid}}">
-  <button type="button" class="btn btn-primary btn-lg">New Share(Post)</button>
+  <button type="button" class="btn btn-primary btn-lg">New Driver Order</button>
 </a>
 
 <br><br>

@@ -39,12 +39,9 @@
     </div>
   </div>
 -->
+<p>Here are <strong>passenger orders</strong> related to this order.</p>
 
-
-<h2>waitlist-for-post</h2>
-
-
-<h4>confirmed request</h4>
+<h4>Confirmed Passenger Order</h4>
 
 <div class="row" *ngIf='confirmedRequestList'>
   <div *ngFor="let request of confirmedRequestList" class="col-md-4" >
@@ -68,7 +65,7 @@
 </div>
 
 
-<h4>join post waitlist</h4>
+<h4>Unconfirmed Passenger Order</h4>
 
 <div class="row" *ngIf='joinpostwaitlist'>
     <div *ngFor="let request of joinpostwaitlist" class="col-md-4" >
@@ -92,7 +89,7 @@
     </div>
   </div>
 
-<h4>invite request waitlist</h4>
+<h4>Invite Passenger Order</h4>
 
 <div class="row" *ngIf='inviterequestwaitlist'>
   <div *ngFor="let request of inviterequestwaitlist" class="col-md-4" >

@@ -1,6 +1,4 @@
-<p>
-  request-list-invite works!
-</p>
+<p><strong>Select</strong> your <strong>exist</strong> passenger order</p>
 
 <div class="row" *ngIf='requestList != []'>
     <div *ngFor="let request of requestList" class="col" style="height: 18rem;">
@@ -17,9 +15,10 @@
     </div>
 </div>
 
+<p><strong>Or</strong> build a <strong>new</strong> passenger order</p>
 
 <a routerLink="/newrequestinvite/{{postid}}">
-  <button type="button" class="btn btn-primary btn-lg">New Take(Request)</button>
+  <button type="button" class="btn btn-primary btn-lg">New Passenger Order</button>
 </a>
 
 <br><br>

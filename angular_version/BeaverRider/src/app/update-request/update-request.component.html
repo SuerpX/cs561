@@ -1,11 +1,8 @@
-
-
-
-<h2>Updata Request</h2>
+<h2>Update Request</h2>
 <form *ngIf="updateRequest" [formGroup]="requestForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group">
-        <label for="departure_location">departure_location</label>
+        <label for="departure_location">Departure Location</label>
         <input type="text" formControlName="departure_location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.departure_location.errors }" />
     </div>
 
@@ -74,7 +71,7 @@
         </div>
 
     <div class="form-group">
-        <label for="destination_location">destination_location</label>
+        <label for="destination_location">Destination Location</label>
         <input type="text" formControlName="destination_location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.destination_location.errors }" />
     </div>
 
@@ -143,18 +140,18 @@
         </div>
 
     <div class="form-group">
-        <label for="departure_time">departure_time</label>
+        <label for="departure_time">Departure Time</label>
         <input type="text" formControlName="departure_time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.departure_time.errors }" />
     </div>
-    <p>2018-11-07 16:34:00</p>
+    <p>Please use format like: <strong>2018-11-07 16:34:00</strong></p>
 
     <div class="form-group">
-        <label for="remarks">remarks</label>
+        <label for="remarks">Remarks</label>
         <input rows="3" type="text" formControlName="remarks" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }" />
     </div>
 
     <div class="form-group">
-        <label for="people_number">people_number</label>
+        <label for="people_number">People Number</label>
         <select class="form-control" formControlName="people_number" id="people_number">
                 <option value="1">1</option>
                 <option value="2">2</option>
