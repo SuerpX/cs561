@@ -1,5 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { User } from '../_models';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -8,9 +9,12 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         
-        if (localStorage.getItem('currentUserId')) {
+        if (localStorage.getItem('currentUser')) {
             // logged in so return true
-            return true;
+            let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser.finishRegister == 1){
+                return true;
+            }
         }
 
 
