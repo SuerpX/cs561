@@ -13,7 +13,7 @@ switch ($_GET['view']){
 
     case 'post_info':
         orderInfo($_GET['postId']);
-         break;
+        break;
     case 'update':
         updatePostOrder();
         break;

@@ -240,7 +240,7 @@
         }
     }
     xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/connect_orders.php?view=readConfirmedOrderForPassenger&userId=chenk5");
-    xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");  
+    xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
     xhr.send();
 
 
