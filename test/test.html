@@ -72,6 +72,7 @@
     xhr.send(JSON.stringify(json));
     */
     /*
+
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function()
     {
@@ -208,29 +209,24 @@
     xhr.send(JSON.stringify(json));
     */
 
-    lb = "<label for=\"departure_time\">Departure Time</label><br>";
-    cl = "<input id=\"party\" type=\"datetime-local\" name=\"partydate\" min=\"" + getNowFormatDate(new Date()) + "\" max=\"" + getNowFormatDate(new Date(new Date().getTime() + 14*60*60*24*1000)) +"\">";
-    document.getElementById("demo").innerHTML = lb + cl;
+    function removeOverlap(l1, l2) {
+        newList = new Array();
+        for(i = 0;i < l1.length; i++){
+            flag = 0;
+            for(j = 0; j < l2.length; j++){
+                if(l1[i].postid == l2[j].postid){
+                    flag = 1;
+                    break;
+                }
 
-    function getNowFormatDate(date) {
-        var date = date;
-        var seperator1 = "-";
-        var seperator2 = ":";
-        var month = date.getMonth() + 1;
-        var strDate = date.getDate();
-        if (month >= 1 && month <= 9) {
-            month = "0" + month;
+            }
+            if (flag == 0){
+                newList.push(l1[i])
+            }
+
         }
-        if (strDate >= 0 && strDate <= 9) {
-            strDate = "0" + strDate;
-        }
-        var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
-            + "T" + date.getHours() + seperator2 + date.getMinutes()
-        return currentdate;
     }
-
 </script>
-<div class="form-group" id="demo">
-</div>
+
 </body>
 </html>

@@ -274,13 +274,57 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     public function waitListOrder($tableName, $tableMainKey)
     */
     function matchOrder($tableName, $st, $et, $dep, $des){
+        /*
         $query = "SELECT * FROM ".$tableName."
-          WHERE departure_time>'".$st."'
-         And departure_time<'".$et."'
-          And departure_city='".$dep."'
-          And destination_city='".$des."'
+          WHERE upper(departure_state)=upper('".$st."')
+         And upper(destination_state)=upper('".$et."')
+          And upper(departure_city)=upper('".$dep."')
+          And upper(destination_city)=upper('".$des."')
           And available=1 And finished=0";
+        print_r($query);
+        */
+        //echo '<br>';
+        $flag = 0;
+        $query = "SELECT * FROM ".$tableName."
+          WHERE ";
+        if($st != ''){
+            if($flag == 0){
+                $flag = 1;
+            }
+            else{
+                $query = $query." And ";
+            }
+            $query = $query."upper(departure_state)=upper('".$st."')";
 
+        }
+        if($et != ''){
+            if($flag == 0){
+                $flag = 1;
+            }
+            else{
+                $query = $query." And ";
+            }
+            $query = $query."upper(destination_state)=upper('".$et."')";
+        }
+        if($dep != ''){
+            if($flag == 0){
+                $flag = 1;
+            }
+            else{
+                $query = $query." And ";
+            }
+            $query = $query."upper(departure_city)=upper('".$dep."')";
+        }
+        if($des != ''){
+            if($flag == 0){
+                $flag = 1;
+            }
+            else{
+                $query = $query." And ";
+            }
+            $query = $query."upper(destination_city)=upper('".$des."')";
+        }
+        $query = $query." And available=1 And finished=0";
         //print_r($query);
         $result = $this->conn->query($query);
 

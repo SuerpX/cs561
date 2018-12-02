@@ -14,7 +14,7 @@ class connectOrder
     }
     public function newConfirmed($info){
         try {
-            $update = "INSERT INTO confirm_list (post_orderid,request_orderid,userid,confirm_time) VALUES (?, ?, ?)";
+            $update = "INSERT INTO confirm_list (post_orderid,request_orderid,userid,confirm_time) VALUES (?, ?, ?, ?)";
             $stmt = $this->conn->prepare($update);
             $stmt->execute([
                 $info->postOrderId,
@@ -133,4 +133,9 @@ VALUES (?, ?, ?)";
         $result = $this->conn->query($query);
         return $result;
     }
+    public function readConfirmedOrderForPostOrderId($postOrderId){
+    $query = "SELECT request_orderid FROM confirm_list WHERE post_orderid='".$postOrderId."'";
+    $result = $this->conn->query($query);
+    return $result;
+}
 }

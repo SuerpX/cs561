@@ -20,7 +20,7 @@
     }
     var json = {
         'postOrderId': '1541742824hezhi',
-        'requestOrderId': '1541554181linzhe',
+        'requestOrderId': '1541554181linzhe'
 
     };
     xhr.open("POST","http://web.engr.oregonstate.edu/~hezhi/api/connect_orders.php?view=confirmed");
@@ -191,7 +191,6 @@
     {
         if( xhr.readyState==4 && xhr.status==200 )
         {
-            console.log(xhr.responseText);
         }
     }
     xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/connect_orders.php?view=readRequestWaitListForDriver&postOrderId=1541827825chenk5");
@@ -208,6 +207,80 @@
     xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/connect_orders.php?view=readPostWaitListForPassenger&requestOrderId=1541893338chenk5");
     xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
     xhr.send();
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if( xhr.readyState==4 && xhr.status==200 )
+        {
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/connect_orders.php?view=readRequestWaitListForPassenger&requestOrderId=1541978131chenk5");
+    xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
+    xhr.send();
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if( xhr.readyState==4 && xhr.status==200 )
+        {
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/connect_orders.php?view=readPostWaitListForPassenger&requestOrderId=1541926244linzhe");
+    xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
+    xhr.send();
+
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if( xhr.readyState==4 && xhr.status==200 )
+        {
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/connect_orders.php?view=readConfirmedOrderForPassenger&userId=chenk5");
+    xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
+    xhr.send();
+
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if( xhr.readyState==4 && xhr.status==200 )
+        {
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/connect_orders.php?view=readUnconfirmedOrderForPassenger&userId=linzhe");
+    xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
+    xhr.send();
+
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if( xhr.readyState==4 && xhr.status==200 )
+        {
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/connect_orders.php?view=readConfirmedOrderForRequestOrderId&requestOrderId=1541893338chenk5");
+    xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
+    xhr.send();
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if( xhr.readyState==4 && xhr.status==200 )
+        {
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/connect_orders.php?view=readConfirmedOrderForPostOrderId&postOrderId=1543561111chenk5");
+    xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
+    xhr.send();
+
 </script>
 
 </body>
