@@ -33,7 +33,7 @@ switch ($_GET['view']){
         activetiedOrder($_GET['userId']);
         break;
     case 'match':
-        matchOrder($_GET['startTime'],$_GET['endTime'],$_GET['departure'],$_GET['destination']);
+        matchOrder($_GET['startState'],$_GET['endState'],$_GET['departure'],$_GET['destination']);
         break;
 
 

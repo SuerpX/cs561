@@ -56,6 +56,9 @@ switch ($_GET['view']) {
     case 'readConfirmedOrderForRequestOrderId':
         readConfirmedOrderForRequestOrderId($_GET['requestOrderId']);
         break;
+    case 'readConfirmedOrderForPostOrderId':
+        readConfirmedOrderForPostOrderId($_GET['postOrderId']);
+        break;
 
 
 
@@ -204,6 +207,11 @@ function readConfirmedOrderForRequestOrderId($requestOrderId){
     $connectOrder = conn();
     $result = $connectOrder->readConfirmedOrderForRequestOrderId($requestOrderId);
     packResultForPost($result,-1, 0);
+}
+function readConfirmedOrderForPostOrderId($postOrderId){
+    $connectOrder = conn();
+    $result = $connectOrder->readConfirmedOrderForPostOrderId($postOrderId);
+    packResultForRequest($result,100, 1);
 }
 function packResultForRequest($result,$availableSeats, $isList){
     $order = connOrder();

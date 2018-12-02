@@ -44,8 +44,8 @@
     xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/post_order.php?view=post_info&postId=1541742824linzhe");
     xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
     xhr.send();
-    */
 
+    */
     /*
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function()
@@ -232,7 +232,7 @@
     xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
     xhr.send(JSON.stringify(json));
     */
-    /*
+
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function()
     {
@@ -241,10 +241,22 @@
             console.log(xhr.responseText);
         }
     }
-    xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/post_order.php?view=match&startTime=2018-11-07 16:30:11&endTime=2018-11-07 16:35:11&departure=corvallis&destination=portland");
+    xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/post_order.php?view=match&startState=&endState=&departure=corvallis&destination=");
     xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
     xhr.send();
-    */
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if( xhr.readyState==4 && xhr.status==200 )
+        {
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.open("GET","http://web.engr.oregonstate.edu/~hezhi/api/request_order.php?view=match&startState=or&endState=OR&departure=corvallis&destination=portland");
+    xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
+    xhr.send();
+
 </script>
 
 </body>
