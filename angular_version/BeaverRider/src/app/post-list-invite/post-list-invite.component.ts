@@ -52,7 +52,7 @@ export class PostListInviteComponent implements OnInit {
 
   getPostWaitlist(){
     //let currentUserId = localStorage.getItem('currentUserId');
-    this.postrequestService.getRequestListfromJoin(this.requestid).pipe(first()).subscribe(requestList => {
+    this.postrequestService.getRequestListfromInvite(this.requestid).pipe(first()).subscribe(requestList => {
       this.PostWaitlist = requestList;
 
       if (this.PostWaitlist != null){
@@ -86,14 +86,12 @@ export class PostListInviteComponent implements OnInit {
         }
         console.log(i);
         console.log(flag);
-        
-        
+
         if (flag == 0){
             this.postList.push(l1[i])
             console.log("push");
             
             console.log(this.postList);
-            
         }
 
     }

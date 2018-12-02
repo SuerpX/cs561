@@ -51,7 +51,7 @@ export class RequestListInviteComponent implements OnInit {
 
   getRequestWaitlist(){
     //let currentUserId = localStorage.getItem('currentUserId');
-    this.postrequestService.getInviteRequestWaitlist(this.postid).pipe(first()).subscribe(requestList => {
+    this.postrequestService.getJoinPostWaitlist(this.postid).pipe(first()).subscribe(requestList => {
       this.requestWaitlist = requestList;
 
       if (this.requestWaitlist != null){
