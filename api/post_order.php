@@ -13,7 +13,7 @@ switch ($_GET['view']){
 
     case 'post_info':
         orderInfo($_GET['postId']);
-        break;
+         break;
     case 'update':
         updatePostOrder();
         break;
@@ -103,7 +103,7 @@ function activetiedOrder($userId){
 function matchOrder($st, $et, $dep, $des){
     $order = conn();
     $result = $order->matchOrder("postInfo", $st, $et, $dep, $des);
-
+ 
     packResult($result, 1);
 }
 function packResult($result, $isList){
